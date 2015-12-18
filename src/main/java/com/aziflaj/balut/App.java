@@ -1,5 +1,7 @@
 package com.aziflaj.balut;
 
+import com.aziflaj.balut.view.DicePanel;
+
 import javax.swing.*;
 
 public class App {
@@ -7,8 +9,10 @@ public class App {
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
-                MainView app = new MainView();
-                app.run();
+//                MainView app = new MainView();
+//                app.run();
+
+                DicePanel panel = new DicePanel();
             }
         });
     }
