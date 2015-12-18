@@ -7,8 +7,8 @@ public class App {
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
-                //TODO: Start the application
-
+                MainView app = new MainView();
+                app.run();
             }
         });
     }
