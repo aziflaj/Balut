@@ -6,16 +6,6 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class DicePanelPresenterImpl implements DicePanelPresenter {
-    // TODO: move to the Dice model
-    private final String[] DICE_FACES = {
-            "face_one.png",
-            "face_two.png",
-            "face_three.png",
-            "face_four.png",
-            "face_five.png",
-            "face_six.png"
-    };
-
     ArrayList<Dice> diceList;
 
     public DicePanelPresenterImpl() {
@@ -45,5 +35,10 @@ public class DicePanelPresenterImpl implements DicePanelPresenter {
         for (Dice dice : diceList) {
             dice.roll();
         }
+    }
+
+    @Override
+    public Dice getDiceAt(int i) {
+        return diceList.get(i);
     }
 }

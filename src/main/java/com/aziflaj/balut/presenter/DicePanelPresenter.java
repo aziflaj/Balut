@@ -12,4 +12,6 @@ public interface DicePanelPresenter {
     void throwDices(int[] indices);
 
     void rollAllDices();
+
+    Dice getDiceAt(int i);
 }
