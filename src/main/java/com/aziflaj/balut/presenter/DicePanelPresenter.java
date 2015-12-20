@@ -1,12 +1,15 @@
 package com.aziflaj.balut.presenter;
 
 
+import com.aziflaj.balut.model.Dice;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public interface DicePanelPresenter {
-    List<? extends Object> getDiceList();
+    ArrayList<Dice> getDiceList();
 
     void throwDices(int[] indices);
 
-    void throwAllDices();
+    void rollAllDices();
 }

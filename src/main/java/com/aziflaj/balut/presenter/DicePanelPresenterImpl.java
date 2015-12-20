@@ -3,7 +3,6 @@ package com.aziflaj.balut.presenter;
 import com.aziflaj.balut.model.Dice;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 
 public class DicePanelPresenterImpl implements DicePanelPresenter {
@@ -29,7 +28,7 @@ public class DicePanelPresenterImpl implements DicePanelPresenter {
     }
 
     @Override
-    public List<Dice> getDiceList() {
+    public ArrayList<Dice> getDiceList() {
         return diceList;
     }
 
@@ -40,7 +39,7 @@ public class DicePanelPresenterImpl implements DicePanelPresenter {
     }
 
     @Override
-    public void throwAllDices() {
+    public void rollAllDices() {
         for (Dice dice : diceList) {
             dice.roll();
         }
