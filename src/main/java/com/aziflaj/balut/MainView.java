@@ -20,6 +20,7 @@ public class MainView extends JFrame {
         System.out.println("Running MainView instance");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.pack();
+        this.setLocationRelativeTo(null); // center on screen
         this.setResizable(false);
         this.setVisible(true);
     }

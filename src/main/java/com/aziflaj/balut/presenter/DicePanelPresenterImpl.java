@@ -23,6 +23,8 @@ public class DicePanelPresenterImpl implements DicePanelPresenter {
 
         for (int i = 0; i < 5; i++) {
             Dice dice = new Dice();
+            //TODO: debugging only! remove!
+            dice.roll();
             diceList.add(dice);
         }
     }

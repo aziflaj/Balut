@@ -18,19 +18,20 @@ public class DiceView extends JButton implements ActionListener {
         this.setIcon(new ImageIcon(questionMark));
 
         // make the background transparent
-        this.setBorder(BorderFactory.createEmptyBorder());
+        this.setBorderPainted(false);
+        this.setFocusPainted(false);
+        this.setContentAreaFilled(false);
         this.addActionListener(this);
     }
 
     @Override
     public void actionPerformed(ActionEvent actionEvent) {
         if (mDice.getState() == Dice.SELECTED) {
-            URL selectedView = ResourceHelper.getResourceURL("dices/unselected/face_one.png");
+            URL selectedView = ResourceHelper.getUnselectedDice(mDice.getValue());
             this.setIcon(new ImageIcon(selectedView));
             mDice.unSelect();
         } else {
-            //TODO: remove the default value!
-            URL selectedView = ResourceHelper.getResourceURL("dices/selected/face_one.png");
+            URL selectedView = ResourceHelper.getSelectedDice(mDice.getValue());
             this.setIcon(new ImageIcon(selectedView));
             mDice.select();
         }
