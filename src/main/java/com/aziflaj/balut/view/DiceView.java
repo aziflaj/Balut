@@ -8,9 +8,17 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.net.URL;
 
+/**
+ * The implementation of the {@code DiceMvpView} interface, specifying what should be done
+ * with the Dice
+ */
 public class DiceView extends JButton implements ActionListener, DiceMvpView {
     Dice mDice;
 
+    /**
+     * Create and paint the view
+     * @param dice The {@code Dice} instance upon the view should be built
+     */
     public DiceView(Dice dice) {
         mDice = dice;
 
@@ -23,6 +31,9 @@ public class DiceView extends JButton implements ActionListener, DiceMvpView {
         this.addActionListener(this);
     }
 
+    /**
+     * Repaints the view of the Dice in the UI
+     */
     public void repaintView() {
         if (mDice.getState() == Dice.SELECTED) {
             URL selectedView = ResourceHelper.getSelectedDice(mDice.getValue());

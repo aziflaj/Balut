@@ -5,9 +5,15 @@ import com.aziflaj.balut.model.Dice;
 import java.util.ArrayList;
 import java.util.Random;
 
+/**
+ * The implementation of {@code DicePanelPresenter}, holding the functionality of the Presenter
+ */
 public class DicePanelPresenterImpl implements DicePanelPresenter {
     ArrayList<Dice> diceList;
 
+    /**
+     * Create the list of the dice used by the game (5 dice)
+     */
     public DicePanelPresenterImpl() {
         diceList = new ArrayList<>();
 
@@ -23,7 +29,7 @@ public class DicePanelPresenterImpl implements DicePanelPresenter {
     }
 
     @Override
-    public void throwDices(int[] indices) {
+    public void rollDices(int[] indices) {
         Random rnd = new Random();
         // TODO: Implement
     }

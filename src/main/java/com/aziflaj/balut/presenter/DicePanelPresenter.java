@@ -6,11 +6,26 @@ import com.aziflaj.balut.model.Dice;
 import java.util.ArrayList;
 
 public interface DicePanelPresenter {
+    /**
+     * @return the dice list of the Presenter implementation
+     */
     ArrayList<Dice> getDiceList();
 
-    void throwDices(int[] indices);
+    /**
+     * Rolls some of the dice, the ones with the given indices
+     * @param indices The indices of dice to roll
+     */
+    void rollDices(int[] indices);
 
+    /**
+     * Rolls all the dices
+     */
     void rollAllDices();
 
-    Dice getDiceAt(int i);
+    /**
+     * Returns a dice at the given index
+     * @param index The index of the dice to return
+     * @return The dice at the given index
+     */
+    Dice getDiceAt(int index);
 }
