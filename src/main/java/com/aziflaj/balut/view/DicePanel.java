@@ -5,6 +5,7 @@ import com.aziflaj.balut.presenter.DicePanelPresenter;
 import com.aziflaj.balut.presenter.DicePanelPresenterImpl;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -18,8 +19,16 @@ public class DicePanel extends JPanel {
         mPresenter = new DicePanelPresenterImpl();
 
         mRollDicesBtn = new JButton("Roll the dice");
-        mDiceViewList = new ArrayList<>();
+        mRollDicesBtn.setFont(new Font("Arial", Font.PLAIN, 20));
+        mRollDicesBtn.setAlignmentX(Component.CENTER_ALIGNMENT);
+        mRollDicesBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                rollDices();
+            }
+        });
 
+        mDiceViewList = new ArrayList<>();
         for (Dice d : mPresenter.getDiceList()) {
             DiceView diceView = new DiceView(d);
             mDiceViewList.add(diceView);
@@ -30,14 +39,10 @@ public class DicePanel extends JPanel {
         this.add(mRollDicesBtn);
         for (DiceView dv : mDiceViewList) {
             this.add(dv);
+            dv.setAlignmentX(Component.CENTER_ALIGNMENT);
         }
 
-        mRollDicesBtn.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent actionEvent) {
-                rollDices();
-            }
-        });
+        this.setOpaque(false);
     }
 
     private void rollDices() {

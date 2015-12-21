@@ -17,6 +17,7 @@ public class MainView extends JFrame {
     public MainView() {
         super("Balut");
 
+        this.setBackground(Color.GREEN);
         this.setLayout(new GridLayout(1, 3, 10, 10));
         this.add(new DicePanel());
     }
