@@ -25,9 +25,10 @@ public class DiceView extends JButton implements ActionListener, DiceMvpView {
         repaintView();
 
         // make the background transparent
-        this.setBorderPainted(false);
-        this.setFocusPainted(false);
+        this.setOpaque(false);
         this.setContentAreaFilled(false);
+        this.setBorderPainted(false);
+
         this.addActionListener(this);
     }
 

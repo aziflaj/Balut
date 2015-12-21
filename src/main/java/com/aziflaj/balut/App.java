@@ -1,7 +1,7 @@
 package com.aziflaj.balut;
 
-import com.aziflaj.balut.utils.BalutExceptionHandler;
 import com.aziflaj.balut.utils.db.DatabaseOpenHelper;
+import com.aziflaj.balut.view.MainView;
 
 import javax.swing.*;
 import java.sql.SQLException;

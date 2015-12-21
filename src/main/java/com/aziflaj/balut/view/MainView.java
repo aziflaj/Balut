@@ -1,4 +1,4 @@
-package com.aziflaj.balut;
+package com.aziflaj.balut.view;
 
 
 import com.aziflaj.balut.view.DicePanel;
@@ -17,9 +17,15 @@ public class MainView extends JFrame {
     public MainView() {
         super("Balut");
 
+        JPanel containerPanel = new JPanel(new GridLayout(1, 3, 10, 10));
+        containerPanel.setBorder(BorderFactory.createEtchedBorder());
+        containerPanel.add(new DicePanel());
+        containerPanel.setOpaque(false);
+
         this.setBackground(Color.GREEN);
-        this.setLayout(new GridLayout(1, 3, 10, 10));
-        this.add(new DicePanel());
+//        this.setLayout(new GridLayout(1, 3, 10, 10));
+//        this.add(new DicePanel());
+        this.add(containerPanel);
     }
 
     /**

@@ -29,9 +29,11 @@ public class Dice {
      * Rolls the dice, by assigning a random value and the state as UNSELECTED
      */
     public void roll() {
-        Random random = new Random();
-        this.value = random.nextInt(6) + 1;
-        this.state = UNSELECTED;
+        if (state != SELECTED) {
+            Random random = new Random();
+            this.value = random.nextInt(6) + 1;
+            this.state = UNSELECTED;
+        }
     }
 
     /**
