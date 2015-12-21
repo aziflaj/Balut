@@ -1,6 +1,10 @@
 package com.aziflaj.balut;
 
+import com.aziflaj.balut.utils.BalutExceptionHandler;
+import com.aziflaj.balut.utils.db.DatabaseOpenHelper;
+
 import javax.swing.*;
+import java.sql.SQLException;
 
 /**
  * The entry point of the application, running everything in parallel
@@ -11,8 +15,15 @@ public class App {
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
-                MainView app = new MainView();
-                app.run();
+                try {
+                    MainView app = new MainView();
+                    app.run();
+                    DatabaseOpenHelper.getInstance();
+                } catch (SQLException ex) {
+                    //TODO: remove stack trace and handle exception on production
+                    ex.printStackTrace();
+                    // BalutExceptionHandler.handleException(ex);
+                }
             }
         });
     }

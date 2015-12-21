@@ -1,3 +1,6 @@
+# Gitignore the SQLite Database
+balut.db
+
 # Gradle-related files
 .gradle/
 build/
