@@ -6,8 +6,17 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * Utility class for creating different Test Cases
+ */
 public class TestUtils {
 
+    /**
+     * Creates a new {@code Dice} instance with the given value
+     *
+     * @param value The value of the dice
+     * @return A {@code Dice} instance witht the given value
+     */
     private static Dice createDiceWithValue(int value) {
         Dice d = new Dice();
         do {
@@ -16,6 +25,12 @@ public class TestUtils {
         return d;
     }
 
+    /**
+     * Creates a Full House test case: three dice with the same value,
+     * and two other dice with the same value. (like 3, 3, 3, 5, 5)
+     *
+     * @return a Full House test case
+     */
     public static List<Dice> createFullHouseTestCase() {
         List<Dice> diceList = new ArrayList<>();
 
@@ -33,6 +48,12 @@ public class TestUtils {
         return diceList;
     }
 
+    /**
+     * Creates a reversed Full House test case: two dice with the same value,
+     * and three other dice with the same value. (like 2, 2, 3, 3, 3)
+     *
+     * @return A reversed Full House test case
+     */
     public static List<Dice> createReversedFullHouseTestCase() {
         List<Dice> diceList = new ArrayList<>();
 
@@ -50,6 +71,12 @@ public class TestUtils {
         return diceList;
     }
 
+    /**
+     * Creates a Three of a Kind with all three in the heading
+     * (1, 1, 1, 2, 3)
+     *
+     * @return A Three of a Kind test case
+     */
     public static List<Dice> createHeadingThreeTestCase() {
         List<Dice> diceList = new ArrayList<>();
 
@@ -66,6 +93,12 @@ public class TestUtils {
         return diceList;
     }
 
+    /**
+     * Creates a Three of a Kind with all three in the middle
+     * (1, 4, 4, 4, 5)
+     *
+     * @return A Three of a Kind test case
+     */
     public static List<Dice> createMiddleThreeTestCase() {
         List<Dice> diceList = new ArrayList<>();
 
@@ -81,6 +114,12 @@ public class TestUtils {
         return diceList;
     }
 
+    /**
+     * Creates a Three of a Kind with all three in the end
+     * (2, 5, 6, 6, 6)
+     *
+     * @return A Three of a Kind test case
+     */
     public static List<Dice> createTrailingThreeTestCase() {
         List<Dice> diceList = new ArrayList<>();
 
@@ -97,6 +136,12 @@ public class TestUtils {
         return diceList;
     }
 
+    /**
+     * Creates a Four of a Kind test case, with all four in the head
+     * (4, 4, 4, 4, 5)
+     *
+     * @return A Four of a Kind test case
+     */
     public static List<Dice> createHeadingFourTestCase() {
         List<Dice> diceList = new ArrayList<>();
 
@@ -111,6 +156,12 @@ public class TestUtils {
         return diceList;
     }
 
+    /**
+     * Creates a Four of a Kind test case, with all four in the end
+     * (1, 6, 6, 6, 6)
+     *
+     * @return A Four of a Kind test case
+     */
     public static List<Dice> createTrailingFourTestCase() {
         List<Dice> diceList = new ArrayList<>();
 
@@ -126,6 +177,12 @@ public class TestUtils {
         return diceList;
     }
 
+    /**
+     * Creates a Four Stair with all four in the beginning
+     * (3, 4, 5, 6, 6)
+     *
+     * @return A Four Stair test case
+     */
     public static List<Dice> createHeadingFourStairTestCase() {
         List<Dice> diceList = new ArrayList<>();
 
@@ -138,6 +195,12 @@ public class TestUtils {
         return diceList;
     }
 
+    /**
+     * Creates a nested Four Stair
+     * (2, 3, 3, 4, 5)
+     *
+     * @return A Four Stair test case
+     */
     public static List<Dice> createNestedFourStairTestCase() {
         List<Dice> diceList = new ArrayList<>();
 
@@ -150,6 +213,12 @@ public class TestUtils {
         return diceList;
     }
 
+    /**
+     * Creates a Four Stair with all four in the end
+     * (3, 3, 4, 5, 6)
+     *
+     * @return A Four Stair test case
+     */
     public static List<Dice> createTrailingFourStairTestCase() {
         List<Dice> diceList = new ArrayList<>();
 
@@ -162,6 +231,11 @@ public class TestUtils {
         return diceList;
     }
 
+    /**
+     * Creates a small Five Stair (1, 2, 3, 4, 5)
+     *
+     * @return A Five Stair test case
+     */
     public static List<Dice> createSmallFiveStairTestCase() {
         List<Dice> diceList = new ArrayList<>();
 
@@ -172,6 +246,11 @@ public class TestUtils {
         return diceList;
     }
 
+    /**
+     * Creates a small Five Stair (2, 3, 4, 5, 6)
+     *
+     * @return A Five Stair test case
+     */
     public static List<Dice> createBigFiveStairTestCase() {
         List<Dice> diceList = new ArrayList<>();
 
@@ -182,6 +261,11 @@ public class TestUtils {
         return diceList;
     }
 
+    /**
+     * Creates a random test case where all the dice are the same
+     *
+     * @return A Five of a Kind test case
+     */
     public static List<Dice> createFiveOfAKindTestCase() {
         List<Dice> diceList = new ArrayList<>();
 

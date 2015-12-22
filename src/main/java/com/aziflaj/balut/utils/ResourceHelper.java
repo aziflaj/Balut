@@ -9,6 +9,7 @@ public final class ResourceHelper {
 
     /**
      * Gets a generic resource by its path
+     *
      * @param resourcePath The path of the resource to find
      * @return The URL of the resource found
      */
@@ -19,6 +20,7 @@ public final class ResourceHelper {
 
     /**
      * Gets a selected dice face from the specified directory
+     *
      * @param dice The value of the dice
      * @return The URL of the selected dice
      */
@@ -29,6 +31,7 @@ public final class ResourceHelper {
 
     /**
      * Gets a selected dice face from the specified directory
+     *
      * @param dice The value of the dice
      * @return The URL of the unselected dice
      */

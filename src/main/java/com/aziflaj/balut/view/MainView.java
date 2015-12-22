@@ -1,8 +1,6 @@
 package com.aziflaj.balut.view;
 
 
-import com.aziflaj.balut.view.DicePanel;
-
 import javax.swing.*;
 import java.awt.*;
 

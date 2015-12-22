@@ -1,6 +1,5 @@
 package com.aziflaj.balut.utils;
 
-
 import javax.swing.*;
 
 public class BalutExceptionHandler {
