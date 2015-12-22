@@ -15,10 +15,10 @@ public class ScoreHelper {
 
         if (isFullHouse(points)) {
             return 25;
-        } else if (isThreeOfAKind(points) || isFourOfAKind(points)) {
-            return sumOfPoints(points);
         } else if (isFiveOfAKind(points)) {
             return 50;
+        } else if (isThreeOfAKind(points) || isFourOfAKind(points)) {
+            return sumOfPoints(points);
         } else if (isFiveStair(points)) {
             return 40;
         } else if (isFourStair(points)) {

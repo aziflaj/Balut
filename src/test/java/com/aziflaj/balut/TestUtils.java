@@ -182,4 +182,16 @@ public class TestUtils {
         return diceList;
     }
 
+    public static List<Dice> createFiveOfAKindTestCase() {
+        List<Dice> diceList = new ArrayList<>();
+
+        Dice random = new Dice();
+        random.roll(); // got a value
+
+        for (int i = 0; i < 5; i++) {
+            diceList.add(random);
+        }
+
+        return diceList;
+    }
 }

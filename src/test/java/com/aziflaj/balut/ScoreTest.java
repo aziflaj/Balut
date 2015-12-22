@@ -100,4 +100,11 @@ public class ScoreTest {
         points = ScoreHelper.calculatePoints(diceList);
         Assert.assertEquals("Big Five Stair should score 40 points", 40, points);
     }
+
+    @Test
+    public void testFiveOfAKind() {
+        diceList = TestUtils.createFiveOfAKindTestCase();
+        points = ScoreHelper.calculatePoints(diceList);
+        Assert.assertEquals("Five of a Kind should score 50", 50, points);
+    }
 }
