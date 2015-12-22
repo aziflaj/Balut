@@ -8,29 +8,25 @@ import java.util.List;
 
 public class TestUtils {
 
+    private static Dice createDiceWithValue(int value) {
+        Dice d = new Dice();
+        do {
+            d.roll();
+        } while (d.getValue() != value);
+        return d;
+    }
+
     public static List<Dice> createFullHouseTestCase() {
         List<Dice> diceList = new ArrayList<>();
 
         // make THREE 1s
         for (int i = 0; i < 3; i++) {
-            Dice d = new Dice();
-            do {
-                d.roll();
-            } while (d.getValue() != 1);
-
-            // Now that value = 1, add the dice in the list
-            diceList.add(d);
+            diceList.add(createDiceWithValue(1));
         }
 
         // make TWO 5s
         for (int i = 0; i < 2; i++) {
-            Dice d = new Dice();
-            do {
-                d.roll();
-            } while (d.getValue() != 5);
-
-            // Now that value = 5, add the dice in the list
-            diceList.add(d);
+            diceList.add(createDiceWithValue(5));
         }
 
         Collections.shuffle(diceList);
@@ -42,28 +38,62 @@ public class TestUtils {
 
         // make TWO 2s
         for (int i = 0; i < 2; i++) {
-            Dice d = new Dice();
-            do {
-                d.roll();
-            } while (d.getValue() != 2);
-
-            // Now that value = 2, add the dice in the list
-            diceList.add(d);
+            diceList.add(createDiceWithValue(2));
         }
 
         // make THREE 3s
         for (int i = 0; i < 3; i++) {
-            Dice d = new Dice();
-            do {
-                d.roll();
-            } while (d.getValue() != 3);
+            diceList.add(createDiceWithValue(3));
+        }
 
-            // Now that value = 3, add the dice in the list
-            diceList.add(d);
+        Collections.shuffle(diceList);
+        return diceList;
+    }
+
+    public static List<Dice> createHeadingThree() {
+        List<Dice> diceList = new ArrayList<>();
+
+        for (int i = 0; i < 3; i++) {
+            diceList.add(createDiceWithValue(4));
+        }
+
+        diceList.add(createDiceWithValue(1));
+        diceList.add(createDiceWithValue(5));
+        Collections.shuffle(diceList);
+
+        // score should be 4 * 3 + 1 + 5 = 18
+        return diceList;
+    }
+
+    public static List<Dice> createMiddleThree() {
+        List<Dice> diceList = new ArrayList<>();
+
+        diceList.add(createDiceWithValue(2));
+
+        for (int i = 0; i < 3; i++) {
+            diceList.add(createDiceWithValue(6));
+        }
+
+        diceList.add(createDiceWithValue(5));
+        Collections.shuffle(diceList);
+
+        // score should be 2 + 6 * 3 + 5 = 25
+        return diceList;
+    }
+
+    public static List<Dice> createTrailingThree() {
+        List<Dice> diceList = new ArrayList<>();
+
+        diceList.add(createDiceWithValue(2));
+        diceList.add(createDiceWithValue(3));
+
+        for (int i = 0; i < 3; i++) {
+            diceList.add(createDiceWithValue(1));
         }
 
         Collections.shuffle(diceList);
 
+        // score should be 2 + 3 + 1 * 3 = 8
         return diceList;
     }
 }
