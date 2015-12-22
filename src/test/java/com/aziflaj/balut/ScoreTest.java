@@ -49,44 +49,55 @@ public class ScoreTest {
 
     @Test
     public void testThreeOfAKind() {
-        diceList = TestUtils.createHeadingThree();
+        diceList = TestUtils.createHeadingThreeTestCase();
         points = ScoreHelper.calculatePoints(diceList);
         Assert.assertEquals("Heading Three of a Kind should score 8 points", 8, points);
 
         diceList.clear();
-        diceList = TestUtils.createMiddleThree();
+        diceList = TestUtils.createMiddleThreeTestCase();
         points = ScoreHelper.calculatePoints(diceList);
         Assert.assertEquals("Middle Three of a Kind should score 18 points", 18, points);
 
         diceList.clear();
-        diceList = TestUtils.createTrailingThree();
+        diceList = TestUtils.createTrailingThreeTestCase();
         points = ScoreHelper.calculatePoints(diceList);
         Assert.assertEquals("Trailing Three of a Kind should score 25 points", 25, points);
     }
 
     @Test
     public void testFourOfAKind() {
-        diceList = TestUtils.createHeadingFour();
+        diceList = TestUtils.createHeadingFourTestCase();
         points = ScoreHelper.calculatePoints(diceList);
         Assert.assertEquals("Heading Four of a Kind should score 21 points", 21, points);
 
-        diceList = TestUtils.createTrailingFour();
+        diceList = TestUtils.createTrailingFourTestCase();
         points = ScoreHelper.calculatePoints(diceList);
         Assert.assertEquals("Trailing Four of a Kind should score 25 points", 25, points);
     }
 
     @Test
     public void testFourStair() {
-        diceList = TestUtils.createHeadingFourStair();
+        diceList = TestUtils.createHeadingFourStairTestCase();
         points = ScoreHelper.calculatePoints(diceList);
         Assert.assertEquals("Heading Four Stair should score 30 points", 30, points);
 
-        diceList = TestUtils.createNestedFourStair();
+        diceList = TestUtils.createNestedFourStairTestCase();
         points = ScoreHelper.calculatePoints(diceList);
         Assert.assertEquals("Nested Four Stair should score 30 points", 30, points);
 
-        diceList = TestUtils.createTrailingFourStair();
+        diceList = TestUtils.createTrailingFourStairTestCase();
         points = ScoreHelper.calculatePoints(diceList);
         Assert.assertEquals("Trailing Four Stair should score 30 points", 30, points);
+    }
+
+    @Test
+    public void testFiveStair() {
+        diceList = TestUtils.createSmallFiveStairTestCase();
+        points = ScoreHelper.calculatePoints(diceList);
+        Assert.assertEquals("Small Five Stair should score 40 points", 40, points);
+
+        diceList = TestUtils.createBigFiveStairTestCase();
+        points = ScoreHelper.calculatePoints(diceList);
+        Assert.assertEquals("Big Five Stair should score 40 points", 40, points);
     }
 }

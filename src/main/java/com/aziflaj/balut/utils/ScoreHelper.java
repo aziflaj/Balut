@@ -19,10 +19,10 @@ public class ScoreHelper {
             return sumOfPoints(points);
         } else if (isFiveOfAKind(points)) {
             return 50;
-        } else if (isFourStair(points)) {
-            return 30;
         } else if (isFiveStair(points)) {
             return 40;
+        } else if (isFourStair(points)) {
+            return 30;
         }
 
         return 0;

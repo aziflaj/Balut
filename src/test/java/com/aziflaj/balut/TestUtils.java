@@ -50,7 +50,7 @@ public class TestUtils {
         return diceList;
     }
 
-    public static List<Dice> createHeadingThree() {
+    public static List<Dice> createHeadingThreeTestCase() {
         List<Dice> diceList = new ArrayList<>();
 
         diceList.add(createDiceWithValue(2));
@@ -66,7 +66,7 @@ public class TestUtils {
         return diceList;
     }
 
-    public static List<Dice> createMiddleThree() {
+    public static List<Dice> createMiddleThreeTestCase() {
         List<Dice> diceList = new ArrayList<>();
 
         for (int i = 0; i < 3; i++) {
@@ -81,7 +81,7 @@ public class TestUtils {
         return diceList;
     }
 
-    public static List<Dice> createTrailingThree() {
+    public static List<Dice> createTrailingThreeTestCase() {
         List<Dice> diceList = new ArrayList<>();
 
         diceList.add(createDiceWithValue(2));
@@ -97,7 +97,7 @@ public class TestUtils {
         return diceList;
     }
 
-    public static List<Dice> createHeadingFour() {
+    public static List<Dice> createHeadingFourTestCase() {
         List<Dice> diceList = new ArrayList<>();
 
         for (int i = 0; i < 4; i++) {
@@ -111,7 +111,7 @@ public class TestUtils {
         return diceList;
     }
 
-    public static List<Dice> createTrailingFour() {
+    public static List<Dice> createTrailingFourTestCase() {
         List<Dice> diceList = new ArrayList<>();
 
         diceList.add(createDiceWithValue(1));
@@ -126,7 +126,7 @@ public class TestUtils {
         return diceList;
     }
 
-    public static List<Dice> createHeadingFourStair() {
+    public static List<Dice> createHeadingFourStairTestCase() {
         List<Dice> diceList = new ArrayList<>();
 
         for (int i = 3; i <= 6; i++) {
@@ -138,7 +138,7 @@ public class TestUtils {
         return diceList;
     }
 
-    public static List<Dice> createNestedFourStair() {
+    public static List<Dice> createNestedFourStairTestCase() {
         List<Dice> diceList = new ArrayList<>();
 
         for (int i = 2; i <= 5; i++) {
@@ -150,7 +150,7 @@ public class TestUtils {
         return diceList;
     }
 
-    public static List<Dice> createTrailingFourStair() {
+    public static List<Dice> createTrailingFourStairTestCase() {
         List<Dice> diceList = new ArrayList<>();
 
         for (int i = 3; i <= 6; i++) {
@@ -158,6 +158,26 @@ public class TestUtils {
         }
 
         diceList.add(createDiceWithValue(3));
+
+        return diceList;
+    }
+
+    public static List<Dice> createSmallFiveStairTestCase() {
+        List<Dice> diceList = new ArrayList<>();
+
+        for (int i = 1; i <= 5; i++) {
+            diceList.add(createDiceWithValue(i));
+        }
+
+        return diceList;
+    }
+
+    public static List<Dice> createBigFiveStairTestCase() {
+        List<Dice> diceList = new ArrayList<>();
+
+        for (int i = 2; i <= 6; i++) {
+            diceList.add(createDiceWithValue(i));
+        }
 
         return diceList;
     }
