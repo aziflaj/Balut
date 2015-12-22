@@ -3,11 +3,12 @@ package com.aziflaj.balut.utils;
 import com.aziflaj.balut.model.Dice;
 
 import java.util.Arrays;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Set;
 
 public class ScoreHelper {
 
-    //TODO: Test
     public static int calculatePoints(List<Dice> dice) {
         int[] points = getPointArray(dice);
         Arrays.sort(points);
@@ -48,13 +49,15 @@ public class ScoreHelper {
     }
 
     private static boolean isFourStair(int[] points) {
+        int[] normalized = removeDuplicates(points);
+
         int[][] winningPossibilities = {
                 {1, 2, 3, 4},
                 {2, 3, 4, 5},
-                {3, 4, 5, 6} };
+                {3, 4, 5, 6}};
 
         for (int[] possibility : winningPossibilities) {
-            if (Arrays.equals(Arrays.copyOf(points, 4), possibility)) {
+            if (Arrays.equals(Arrays.copyOf(normalized, 4), possibility)) {
                 return true;
             }
         }
@@ -65,7 +68,7 @@ public class ScoreHelper {
     private static boolean isFiveStair(int[] points) {
         int[][] winningPossibilities = {
                 {1, 2, 3, 4, 5},
-                {2, 3, 4, 5, 6} };
+                {2, 3, 4, 5, 6}};
 
         for (int[] possibility : winningPossibilities) {
             if (Arrays.equals(points, possibility)) {
@@ -76,7 +79,7 @@ public class ScoreHelper {
         return false;
     }
 
-    private static boolean isFiveOfAKind (int[] points) {
+    private static boolean isFiveOfAKind(int[] points) {
         return points[0] == points[1] && points[1] == points[2] && points[2] == points[3]
                 && points[3] == points[4];
     }
@@ -92,10 +95,26 @@ public class ScoreHelper {
     private static int sumOfPoints(int[] points) {
         int sum = 0;
 
-        for(int i : points) {
+        for (int i : points) {
             sum += i;
         }
 
         return sum;
+    }
+
+    private static int[] removeDuplicates(int[] points) {
+        Set<Integer> set = new LinkedHashSet<>();
+        for (int p : points) {
+            set.add(p);
+        }
+
+        int[] normalized = new int[set.size()];
+        int index = 0;
+        for (Integer point : set) {
+            normalized[index] = point;
+            index++;
+        }
+
+        return normalized;
     }
 }

@@ -125,4 +125,41 @@ public class TestUtils {
         // score should be 4 * 4 + 5 = 21
         return diceList;
     }
+
+    public static List<Dice> createHeadingFourStair() {
+        List<Dice> diceList = new ArrayList<>();
+
+        for (int i = 3; i <= 6; i++) {
+            diceList.add(createDiceWithValue(i));
+        }
+
+        diceList.add(createDiceWithValue(6));
+
+        return diceList;
+    }
+
+    public static List<Dice> createNestedFourStair() {
+        List<Dice> diceList = new ArrayList<>();
+
+        for (int i = 2; i <= 5; i++) {
+            diceList.add(createDiceWithValue(i));
+        }
+
+        diceList.add(createDiceWithValue(3));
+
+        return diceList;
+    }
+
+    public static List<Dice> createTrailingFourStair() {
+        List<Dice> diceList = new ArrayList<>();
+
+        for (int i = 3; i <= 6; i++) {
+            diceList.add(createDiceWithValue(i));
+        }
+
+        diceList.add(createDiceWithValue(3));
+
+        return diceList;
+    }
+
 }
