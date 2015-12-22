@@ -53,6 +53,22 @@ public class TestUtils {
     public static List<Dice> createHeadingThree() {
         List<Dice> diceList = new ArrayList<>();
 
+        diceList.add(createDiceWithValue(2));
+        diceList.add(createDiceWithValue(3));
+
+        for (int i = 0; i < 3; i++) {
+            diceList.add(createDiceWithValue(1));
+        }
+
+        Collections.shuffle(diceList);
+
+        // score should be 2 + 3 + 1 * 3 = 8
+        return diceList;
+    }
+
+    public static List<Dice> createMiddleThree() {
+        List<Dice> diceList = new ArrayList<>();
+
         for (int i = 0; i < 3; i++) {
             diceList.add(createDiceWithValue(4));
         }
@@ -65,7 +81,7 @@ public class TestUtils {
         return diceList;
     }
 
-    public static List<Dice> createMiddleThree() {
+    public static List<Dice> createTrailingThree() {
         List<Dice> diceList = new ArrayList<>();
 
         diceList.add(createDiceWithValue(2));
@@ -81,19 +97,32 @@ public class TestUtils {
         return diceList;
     }
 
-    public static List<Dice> createTrailingThree() {
+    public static List<Dice> createHeadingFour() {
         List<Dice> diceList = new ArrayList<>();
 
-        diceList.add(createDiceWithValue(2));
-        diceList.add(createDiceWithValue(3));
+        for (int i = 0; i < 4; i++) {
+            diceList.add(createDiceWithValue(4));
+        }
 
-        for (int i = 0; i < 3; i++) {
-            diceList.add(createDiceWithValue(1));
+        diceList.add(createDiceWithValue(5));
+        Collections.shuffle(diceList);
+
+        // score should be 4 * 4 + 5 = 21
+        return diceList;
+    }
+
+    public static List<Dice> createTrailingFour() {
+        List<Dice> diceList = new ArrayList<>();
+
+        diceList.add(createDiceWithValue(1));
+
+        for (int i = 0; i < 4; i++) {
+            diceList.add(createDiceWithValue(6));
         }
 
         Collections.shuffle(diceList);
 
-        // score should be 2 + 3 + 1 * 3 = 8
+        // score should be 4 * 4 + 5 = 21
         return diceList;
     }
 }
