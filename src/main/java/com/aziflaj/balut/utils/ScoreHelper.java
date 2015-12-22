@@ -28,7 +28,10 @@ public class ScoreHelper {
     }
 
     private static boolean isFullHouse(int[] points) {
+
         return points[0] == points[1] && points[1] == points[2]
+                && points[3] == points[4] && points[0] != points[4]
+                || points[0] == points[1] && points[2] == points[3]
                 && points[3] == points[4] && points[0] != points[4];
     }
 
