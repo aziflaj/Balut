@@ -2,16 +2,16 @@ package com.aziflaj.balut.view.player;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.List;
 
 public class PlayerPanel extends JPanel {
 
-    public PlayerPanel(int players) {
+    public PlayerPanel(List<String> players) {
         this.setLayout(new GridLayout());
 
-        for (int i = 0; i < players; i++) {
-            PlayerView player = new PlayerView("Player" + (i + 1));
+        for (String playerName : players) {
+            PlayerView player = new PlayerView(playerName);
             this.add(player);
         }
-
     }
 }

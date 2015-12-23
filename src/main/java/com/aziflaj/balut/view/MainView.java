@@ -7,6 +7,7 @@ import com.aziflaj.balut.view.player.PlayerPanel;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.List;
 
 /**
  * The {@code JFrame} that will contain all the views
@@ -16,7 +17,7 @@ public class MainView extends JFrame {
     /**
      * Creates a UI frame, putting every UI widget in its place
      */
-    public MainView(int players) {
+    public MainView(List<String> players) {
         super("Balut");
 
         JPanel containerPanel = new JPanel(new GridLayout(1, 3, 10, 10));

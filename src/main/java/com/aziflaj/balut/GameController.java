@@ -3,11 +3,16 @@ package com.aziflaj.balut;
 import com.aziflaj.balut.view.MainView;
 
 import javax.swing.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class GameController {
     int playersNumber = 0;
+    List<String> playerNames;
 
     public GameController() {
+        playerNames = new ArrayList<>();
+
         // get the number of players
         while (playersNumber < 5 || playersNumber > 0) {
             String playersNumberStr = JOptionPane.showInputDialog(
@@ -29,7 +34,16 @@ public class GameController {
             }
         }
 
-        MainView app = new MainView(playersNumber);
+        for (int i = 0; i < playersNumber; i++) {
+            String player = JOptionPane.showInputDialog(
+                    null,
+                    String.format("Enter Player's %d name", (i + 1)),
+                    "Players",
+                    JOptionPane.QUESTION_MESSAGE);
+            playerNames.add(player);
+        }
+
+        MainView app = new MainView(playerNames);
         app.run();
 
     }
