@@ -1,7 +1,7 @@
 package com.aziflaj.balut.utils;
 
 /**
- * TODO: comment
+ * Different types of game categories, selected by the user after each roll
  */
 public enum GameCategory {
     ONES, TWOS, THREES, FOURS, FIVES, SIXES,

@@ -5,6 +5,7 @@ import com.aziflaj.balut.utils.GameCategory;
 import com.aziflaj.balut.utils.ScoreHelper;
 import org.junit.*;
 
+import javax.swing.table.TableStringConverter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -107,5 +108,38 @@ public class ScoreTest {
         diceList = TestUtils.createFiveOfAKindTestCase();
         points = ScoreHelper.calculatePoints(diceList, GameCategory.FIVE_OF_A_KIND);
         Assert.assertEquals("Five of a Kind should score 50", 50, points);
+    }
+
+    @Test
+    public void testAllCases() {
+        diceList = TestUtils.createFullHouseTestCase();
+        points = ScoreHelper.calculatePoints(diceList, GameCategory.ANY_CASE);
+        Assert.assertEquals("Any Case should score 13", 13, points);
+    }
+
+    @Test
+    public void testSingles() {
+        diceList = TestUtils.createFullHouseTestCase();
+        points = ScoreHelper.calculatePoints(diceList, GameCategory.ONES);
+        Assert.assertEquals("Ones should score 3", 3, points);
+
+        points = ScoreHelper.calculatePoints(diceList, GameCategory.TWOS);
+        Assert.assertEquals("Twos should score 0", 0, points);
+
+        diceList = TestUtils.createReversedFullHouseTestCase();
+        points = ScoreHelper.calculatePoints(diceList, GameCategory.THREES);
+        Assert.assertEquals("Threes should score 9", 9, points);
+
+        diceList = TestUtils.createHeadingFourTestCase();
+        points = ScoreHelper.calculatePoints(diceList, GameCategory.FOURS);
+        Assert.assertEquals("Fours should score 16", 16, points);
+
+        diceList = TestUtils.createFullHouseTestCase();
+        points = ScoreHelper.calculatePoints(diceList, GameCategory.FIVES);
+        Assert.assertEquals("Fives should score 10", 10, points);
+
+        diceList = TestUtils.createTrailingFourTestCase();
+        points = ScoreHelper.calculatePoints(diceList, GameCategory.SIXES);
+        Assert.assertEquals("Sixes should score 24", 24, points);
     }
 }
