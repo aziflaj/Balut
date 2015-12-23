@@ -4,7 +4,6 @@ import javax.swing.*;
 import java.awt.*;
 
 public class PlayerPanel extends JPanel {
-//    PlayerPanelPresenter mPresenter;
 
     public PlayerPanel() {
         this.setLayout(new GridLayout());

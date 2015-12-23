@@ -18,6 +18,7 @@ public class MainView extends JFrame {
         JPanel containerPanel = new JPanel(new GridLayout(1, 3, 10, 10));
         containerPanel.setBorder(BorderFactory.createEtchedBorder());
         containerPanel.add(new DicePanel());
+        containerPanel.add(new CategoriesPanel());
         containerPanel.add(new PlayerPanel());
         containerPanel.setOpaque(false);
 
