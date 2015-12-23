@@ -12,12 +12,6 @@ public class Player {
     int mPoints;
 
     /**
-     * Protected empty constructor with no parameters which shouldn't be used
-     */
-    protected Player() {
-    }
-
-    /**
      * Creates a new player with the given name and no points
      *
      * @param name The name of the player

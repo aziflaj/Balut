@@ -1,5 +1,7 @@
 package com.aziflaj.balut;
 
+import com.aziflaj.balut.model.Dice;
+import com.aziflaj.balut.model.Player;
 import com.aziflaj.balut.view.MainView;
 
 import javax.swing.*;
@@ -9,9 +11,17 @@ import java.util.List;
 public class GameController {
     int playersNumber = 0;
     List<String> playerNames;
+    List<Player> playerList;
+    int playerIndex = 0;
+    MainView gameView;
 
     private GameController() {
         playerNames = new ArrayList<>();
+        playerList = new ArrayList<>();
+
+        for (String name : playerNames) {
+            playerList.add(new Player(name));
+        }
 
         // get the number of players
         while (playersNumber < 5 || playersNumber > 0) {
@@ -43,12 +53,12 @@ public class GameController {
             playerNames.add(player);
         }
 
-        MainView game = new MainView(playerNames);
-        game.run();
+        gameView = new MainView(playerNames);
+        gameView.run();
 
         for (int turn = 0; turn < 13; turn++) {
             for (String player : playerNames) {
-                game.setStatus(player + " turn. ");
+                gameView.setStatus(player + " turn. ");
                 for (int i = 0; i < 3; i++) {
                     System.out.println("Roll");
                 }
@@ -60,4 +70,26 @@ public class GameController {
         new GameController();
     }
 
+    public static ArrayList<Dice> rollDice(ArrayList<Dice> diceList) {
+        for (Dice dice : diceList) {
+            dice.roll();
+        }
+        return diceList;
+    }
+
+    private Player nextPlayer() {
+        playerIndex++;
+        if (playerIndex > playerList.size()) {
+            playerIndex = 0;
+        }
+
+        return playerList.get(playerIndex);
+    }
+
+    public static ArrayList<Dice> rollSomeDice(ArrayList<Dice> diceList, int[] indices) {
+        for (int i : indices) {
+            diceList.get(i).roll();
+        }
+        return diceList;
+    }
 }

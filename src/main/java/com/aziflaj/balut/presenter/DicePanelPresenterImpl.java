@@ -1,5 +1,6 @@
 package com.aziflaj.balut.presenter;
 
+import com.aziflaj.balut.GameController;
 import com.aziflaj.balut.model.Dice;
 import com.aziflaj.balut.utils.ScoreHelper;
 
@@ -30,16 +31,12 @@ public class DicePanelPresenterImpl implements DicePanelPresenter {
 
     @Override
     public void rollDices(int[] indices) {
-        for (int i : indices) {
-            mDiceList.get(i).roll();
-        }
+        mDiceList = GameController.rollSomeDice(mDiceList, indices);
     }
 
     @Override
     public void rollAllDices() {
-        for (Dice dice : mDiceList) {
-            dice.roll();
-        }
+        mDiceList = GameController.rollDice(mDiceList);
     }
 
     @Override

@@ -26,21 +26,7 @@ public class PlayerView extends JPanel {
         pointsList = new ArrayList<>();
         // create the points list
         for (int i = 0; i < 17; i++) {
-//            JLabel label = new JLabel("Label");
             JButton button = new JButton(String.format(SCORE_FORMAT, 0));
-
-            // some fields are reserved for totals and bonuses
-//            if (i != 6 && i != 7 && i != 15 && i != 16) {
-//                label.addMouseListener(new MouseAdapter() {
-//                    @Override
-//                    public void mouseClicked(MouseEvent e) {
-//                        System.out.println("List item clicked");
-//                    }
-//                });
-//            }
-
-//            pointsList.add(label);
-//            this.add(label);
             this.add(button);
             button.setAlignmentX(Component.CENTER_ALIGNMENT);
         }

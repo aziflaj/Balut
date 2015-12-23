@@ -32,10 +32,9 @@ public class PlayerPresenterImpl implements PlayerPresenter {
         mPointsMap.put(GameCategory.ANY_CASE, null);
     }
 
-
     @Override
-    public void rollDice() {
-
+    public void play() {
+        rollDices();
     }
 
     @Override
@@ -70,5 +69,9 @@ public class PlayerPresenterImpl implements PlayerPresenter {
         int bonus = (lower > 63) ? 35 : 0;
         int upper = calculateUpperPoints();
         return lower + bonus + upper;
+    }
+
+    private void rollDices() {
+        System.out.println("Rolling dices");
     }
 }
