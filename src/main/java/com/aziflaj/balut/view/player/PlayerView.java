@@ -1,4 +1,4 @@
-package com.aziflaj.balut.view;
+package com.aziflaj.balut.view.player;
 
 import com.aziflaj.balut.presenter.PlayerPresenter;
 import com.aziflaj.balut.presenter.PlayerPresenterImpl;

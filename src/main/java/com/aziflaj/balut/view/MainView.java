@@ -1,6 +1,10 @@
 package com.aziflaj.balut.view;
 
 
+import com.aziflaj.balut.view.dice.DicePanel;
+import com.aziflaj.balut.view.player.CategoriesPanel;
+import com.aziflaj.balut.view.player.PlayerPanel;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -12,14 +16,14 @@ public class MainView extends JFrame {
     /**
      * Creates a UI frame, putting every UI widget in its place
      */
-    public MainView() {
+    public MainView(int players) {
         super("Balut");
 
         JPanel containerPanel = new JPanel(new GridLayout(1, 3, 10, 10));
         containerPanel.setBorder(BorderFactory.createEtchedBorder());
         containerPanel.add(new DicePanel());
         containerPanel.add(new CategoriesPanel());
-        containerPanel.add(new PlayerPanel());
+        containerPanel.add(new PlayerPanel(players));
         containerPanel.setOpaque(false);
 
         this.add(containerPanel);

@@ -1,4 +1,4 @@
-package com.aziflaj.balut.view;
+package com.aziflaj.balut.view.dice;
 
 import com.aziflaj.balut.model.Dice;
 import com.aziflaj.balut.presenter.DicePanelPresenter;

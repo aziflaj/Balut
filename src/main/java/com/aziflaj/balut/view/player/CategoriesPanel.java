@@ -1,4 +1,4 @@
-package com.aziflaj.balut.view;
+package com.aziflaj.balut.view.player;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;

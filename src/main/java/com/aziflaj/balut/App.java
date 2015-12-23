@@ -1,5 +1,6 @@
 package com.aziflaj.balut;
 
+import com.aziflaj.balut.utils.BalutExceptionHandler;
 import com.aziflaj.balut.utils.db.DatabaseOpenHelper;
 import com.aziflaj.balut.view.MainView;
 
@@ -16,13 +17,12 @@ public class App {
             @Override
             public void run() {
                 try {
-                    MainView app = new MainView();
-                    app.run();
+//                    MainView app = new MainView();
+//                    app.run();
+                    new GameController();
                     DatabaseOpenHelper.getInstance();
                 } catch (SQLException ex) {
-                    //TODO: remove stack trace and handle exception on production
-                    ex.printStackTrace();
-                    // BalutExceptionHandler.handleException(ex);
+                     BalutExceptionHandler.handleException(ex);
                 }
             }
         });
