@@ -10,7 +10,7 @@ public class GameController {
     int playersNumber = 0;
     List<String> playerNames;
 
-    public GameController() {
+    private GameController() {
         playerNames = new ArrayList<>();
 
         // get the number of players
@@ -43,9 +43,21 @@ public class GameController {
             playerNames.add(player);
         }
 
-        MainView app = new MainView(playerNames);
-        app.run();
+        MainView game = new MainView(playerNames);
+        game.run();
 
+        for (int turn = 0; turn < 13; turn++) {
+            for (String player : playerNames) {
+                game.setStatus(player + " turn. ");
+                for (int i = 0; i < 3; i++) {
+                    System.out.println("Roll");
+                }
+            }
+        }
+    }
+
+    public static void start() {
+        new GameController();
     }
 
 }

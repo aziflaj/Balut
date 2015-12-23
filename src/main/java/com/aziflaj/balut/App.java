@@ -17,9 +17,7 @@ public class App {
             @Override
             public void run() {
                 try {
-//                    MainView app = new MainView();
-//                    app.run();
-                    new GameController();
+                    GameController.start();
                     DatabaseOpenHelper.getInstance();
                 } catch (SQLException ex) {
                      BalutExceptionHandler.handleException(ex);

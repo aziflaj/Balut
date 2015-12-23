@@ -13,12 +13,14 @@ import java.util.List;
  * The {@code JFrame} that will contain all the views
  */
 public class MainView extends JFrame {
+    JLabel statusLabel;
 
     /**
      * Creates a UI frame, putting every UI widget in its place
      */
     public MainView(List<String> players) {
         super("Balut");
+        statusLabel = new JLabel("Hello My People");
 
         JPanel containerPanel = new JPanel(new GridLayout(1, 3, 10, 10));
         containerPanel.setBorder(BorderFactory.createEtchedBorder());
@@ -27,7 +29,9 @@ public class MainView extends JFrame {
         containerPanel.add(new PlayerPanel(players));
         containerPanel.setOpaque(false);
 
-        this.add(containerPanel);
+        this.setLayout(new BorderLayout());
+        this.add(containerPanel, BorderLayout.CENTER);
+        this.add(statusLabel, BorderLayout.SOUTH);
     }
 
     /**
@@ -39,5 +43,9 @@ public class MainView extends JFrame {
         this.setLocationRelativeTo(null); // center on screen
         this.setResizable(false);
         this.setVisible(true);
+    }
+
+    public void setStatus(String status) {
+        statusLabel.setText(status);
     }
 }
