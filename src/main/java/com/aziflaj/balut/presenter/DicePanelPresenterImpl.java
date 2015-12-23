@@ -40,8 +40,6 @@ public class DicePanelPresenterImpl implements DicePanelPresenter {
         for (Dice dice : mDiceList) {
             dice.roll();
         }
-        int points = ScoreHelper.calculatePoints(mDiceList);
-        System.out.println("Result: " + points);
     }
 
     @Override
