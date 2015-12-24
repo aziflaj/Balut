@@ -8,4 +8,6 @@ public interface PlayerPresenter {
     int calculateUpperPoints();
     int calculateLowerPoints();
     int calculateTotal();
+
+    int calculatePoints(int index);
 }

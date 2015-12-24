@@ -1,7 +1,9 @@
 package com.aziflaj.balut.presenter;
 
+import com.aziflaj.balut.GameController;
 import com.aziflaj.balut.model.Player;
 import com.aziflaj.balut.utils.GameCategory;
+import com.aziflaj.balut.utils.ScoreHelper;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -73,5 +75,77 @@ public class PlayerPresenterImpl implements PlayerPresenter {
 
     private void rollDices() {
         System.out.println("Rolling dices");
+    }
+
+    public int calculatePoints(int index) {
+        switch (index) {
+            case 0: // ONES
+                return ScoreHelper.calculatePoints(
+                        GameController.getInstance().getDiceList(),
+                        GameCategory.ONES);
+
+            case 1: // TWOS
+                return ScoreHelper.calculatePoints(
+                        GameController.getInstance().getDiceList(),
+                        GameCategory.TWOS);
+
+            case 2: // THREES
+                return ScoreHelper.calculatePoints(
+                        GameController.getInstance().getDiceList(),
+                        GameCategory.THREES);
+
+            case 3: // FOURS
+                return ScoreHelper.calculatePoints(
+                        GameController.getInstance().getDiceList(),
+                        GameCategory.FOURS);
+
+            case 4: // FIVES
+                return ScoreHelper.calculatePoints(
+                        GameController.getInstance().getDiceList(),
+                        GameCategory.FIVES);
+
+            case 5: // SIXES
+                return ScoreHelper.calculatePoints(
+                        GameController.getInstance().getDiceList(),
+                        GameCategory.SIXES);
+
+            case 8: // THREE OF A KIND
+                return ScoreHelper.calculatePoints(
+                        GameController.getInstance().getDiceList(),
+                        GameCategory.THREE_OF_A_KIND);
+
+            case 9: // FOUR OF A KIND
+                return ScoreHelper.calculatePoints(
+                        GameController.getInstance().getDiceList(),
+                        GameCategory.FOUR_OF_A_KIND);
+
+            case 10: // FULL HOUSE
+                return ScoreHelper.calculatePoints(
+                        GameController.getInstance().getDiceList(),
+                        GameCategory.FULL_HOUSE);
+
+            case 11: // FOUR STAIR
+                return ScoreHelper.calculatePoints(
+                        GameController.getInstance().getDiceList(),
+                        GameCategory.FOUR_STAIR);
+
+            case 12: // FIVE STAIR
+                return ScoreHelper.calculatePoints(
+                        GameController.getInstance().getDiceList(),
+                        GameCategory.FIVE_STAIR);
+
+            case 13: // FIVE OF A KIND
+                return ScoreHelper.calculatePoints(
+                        GameController.getInstance().getDiceList(),
+                        GameCategory.FIVE_OF_A_KIND);
+
+            case 14: // ANY CASE
+                return ScoreHelper.calculatePoints(
+                        GameController.getInstance().getDiceList(),
+                        GameCategory.ANY_CASE);
+
+            default:
+                return 0;
+        }
     }
 }

@@ -5,16 +5,28 @@ import com.aziflaj.balut.model.Player;
 import com.aziflaj.balut.view.MainView;
 
 import javax.swing.*;
-import javax.swing.text.StringContent;
 import java.util.ArrayList;
 import java.util.List;
 
 public class GameController {
+    private static GameController instance = null;
+
+    List<Dice> mDiceList = null;
+
+    int rolls = 0;
     int playersNumber = 0;
     List<String> playerNames;
     List<Player> playerList;
     int playerIndex = 0;
     MainView gameView;
+
+    public static GameController getInstance() {
+        if (instance == null) {
+            instance = new GameController();
+        }
+
+        return instance;
+    }
 
     private GameController() {
         playerNames = new ArrayList<>();
@@ -58,8 +70,7 @@ public class GameController {
         gameView = new MainView(playerNames);
         gameView.run();
 
-        Player player = nextPlayer();
-        gameView.setStatus(String.format(MainView.STATUS_FORMAT, player.getName()));
+        playTurn();
 
 //        for (int turn = 0; turn < 13; turn++) {
 //            for (String player : playerNames) {
@@ -72,13 +83,22 @@ public class GameController {
     }
 
     public static void start() {
-        new GameController();
+        GameController.getInstance();
     }
 
-    public static ArrayList<Dice> rollDice(ArrayList<Dice> diceList) {
+    public ArrayList<Dice> rollDice(ArrayList<Dice> diceList) {
         for (Dice dice : diceList) {
             dice.roll();
         }
+        mDiceList = diceList;
+        return diceList;
+    }
+
+    public ArrayList<Dice> rollSomeDice(ArrayList<Dice> diceList, int[] indices) {
+        for (int i : indices) {
+            diceList.get(i).roll();
+        }
+        mDiceList = diceList;
         return diceList;
     }
 
@@ -90,10 +110,12 @@ public class GameController {
         return playerList.get(playerIndex++);
     }
 
-    public static ArrayList<Dice> rollSomeDice(ArrayList<Dice> diceList, int[] indices) {
-        for (int i : indices) {
-            diceList.get(i).roll();
-        }
-        return diceList;
+    public void playTurn() {
+        Player player = nextPlayer();
+        gameView.setStatus(String.format(MainView.STATUS_FORMAT, player.getName()));
+    }
+
+    public List<Dice> getDiceList() {
+        return mDiceList;
     }
 }

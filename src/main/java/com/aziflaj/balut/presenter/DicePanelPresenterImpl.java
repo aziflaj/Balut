@@ -31,12 +31,12 @@ public class DicePanelPresenterImpl implements DicePanelPresenter {
 
     @Override
     public void rollDices(int[] indices) {
-        mDiceList = GameController.rollSomeDice(mDiceList, indices);
+        mDiceList = GameController.getInstance().rollSomeDice(mDiceList, indices);
     }
 
     @Override
     public void rollAllDices() {
-        mDiceList = GameController.rollDice(mDiceList);
+        mDiceList = GameController.getInstance().rollDice(mDiceList);
     }
 
     @Override

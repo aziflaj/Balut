@@ -1,5 +1,6 @@
 package com.aziflaj.balut.view.dice;
 
+import com.aziflaj.balut.GameController;
 import com.aziflaj.balut.model.Dice;
 import com.aziflaj.balut.presenter.DicePanelPresenter;
 import com.aziflaj.balut.presenter.DicePanelPresenterImpl;
@@ -25,6 +26,7 @@ public class DicePanel extends JPanel {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 rollDices();
+//                GameController.getInstance().playTurn();
             }
         });
 
