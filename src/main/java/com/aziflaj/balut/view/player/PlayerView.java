@@ -47,6 +47,7 @@ public class PlayerView extends JPanel {
 
                         button.setText(String.format(SCORE_FORMAT, points));
                         button.setEnabled(false);
+                        GameController.getInstance().enableRolling();
                         GameController.getInstance().playTurn();
                     }
                 });

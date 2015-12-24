@@ -18,6 +18,7 @@ public class MainView extends JFrame {
     public static final String STATUS_FORMAT = "%s turn.";
     JLabel statusLabel;
     ArrayList<PlayerPresenter> presenters;
+    DicePanel mDicePanel;
 
     /**
      * Creates a UI frame, putting every UI widget in its place
@@ -28,7 +29,8 @@ public class MainView extends JFrame {
 
         JPanel containerPanel = new JPanel(new GridLayout(1, 3, 10, 10));
         containerPanel.setBorder(BorderFactory.createEtchedBorder());
-        containerPanel.add(new DicePanel());
+        mDicePanel = new DicePanel();
+        containerPanel.add(mDicePanel);
         containerPanel.add(new CategoriesPanel());
         PlayerPanel playerPanel = new PlayerPanel(players);
         containerPanel.add(playerPanel);
@@ -58,5 +60,9 @@ public class MainView extends JFrame {
 
     public ArrayList<PlayerPresenter> getPresenters() {
         return presenters;
+    }
+
+    public void enableRolling() {
+        mDicePanel.enableRolling();
     }
 }

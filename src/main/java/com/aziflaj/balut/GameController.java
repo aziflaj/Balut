@@ -14,7 +14,6 @@ public class GameController {
 
     List<Dice> mDiceList = null;
     List<PlayerPresenter> mPlayerPresenters;
-    int rolls = 0;
     int playersNumber = 0;
     List<String> playerNames;
     List<Player> playerList;
@@ -65,15 +64,6 @@ public class GameController {
         gameView.run();
 
         playTurn();
-
-//        for (int turn = 0; turn < 13; turn++) {
-//            for (String player : playerNames) {
-//                gameView.setStatus(player + " turn. ");
-//                for (int i = 0; i < 3; i++) {
-//                    System.out.println("Roll");
-//                }
-//            }
-//        }
     }
 
     public static GameController getInstance() {
@@ -86,10 +76,6 @@ public class GameController {
 
     public static void start() {
         GameController.getInstance();
-    }
-
-    public void setPlayerPresenters(List<PlayerPresenter> mPlayerPresenters) {
-        this.mPlayerPresenters = mPlayerPresenters;
     }
 
     public ArrayList<Dice> rollDice(ArrayList<Dice> diceList) {
@@ -137,5 +123,9 @@ public class GameController {
 
     public List<Dice> getDiceList() {
         return mDiceList;
+    }
+
+    public void enableRolling() {
+        gameView.enableRolling();
     }
 }

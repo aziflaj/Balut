@@ -1,6 +1,5 @@
 package com.aziflaj.balut.view.dice;
 
-import com.aziflaj.balut.GameController;
 import com.aziflaj.balut.model.Dice;
 import com.aziflaj.balut.presenter.DicePanelPresenter;
 import com.aziflaj.balut.presenter.DicePanelPresenterImpl;
@@ -16,6 +15,8 @@ public class DicePanel extends JPanel {
     JButton mRollDicesBtn;
     ArrayList<DiceView> mDiceViewList;
 
+    int clicked = 0;
+
     public DicePanel() {
         mPresenter = new DicePanelPresenterImpl();
 
@@ -25,8 +26,13 @@ public class DicePanel extends JPanel {
         mRollDicesBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                rollDices();
-//                GameController.getInstance().playTurn();
+                if (clicked < 3) {
+                    rollDices();
+                    clicked++;
+                } else {
+                    clicked = 0;
+                    mRollDicesBtn.setEnabled(false); // so the scoring button will be clicked
+                }
             }
         });
 
@@ -53,5 +59,10 @@ public class DicePanel extends JPanel {
         for (DiceView dv : mDiceViewList) {
             dv.updateDice(mPresenter.getDiceAt(i++));
         }
+    }
+
+    public void enableRolling() {
+        mRollDicesBtn.setEnabled(true);
+        clicked = 0;
     }
 }
