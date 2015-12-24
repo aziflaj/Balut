@@ -25,7 +25,14 @@ public class Player {
      * @return The points of the player
      */
     public int getPoints() {
-        return this.mPoints;
+        return mPoints;
+    }
+
+    /**
+     * @return The name of the player
+     */
+    public String getName() {
+        return mName;
     }
 
     /**

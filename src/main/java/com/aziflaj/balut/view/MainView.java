@@ -13,6 +13,7 @@ import java.util.List;
  * The {@code JFrame} that will contain all the views
  */
 public class MainView extends JFrame {
+    public static final String STATUS_FORMAT = "%s turn.";
     JLabel statusLabel;
 
     /**

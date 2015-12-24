@@ -5,6 +5,7 @@ import com.aziflaj.balut.model.Player;
 import com.aziflaj.balut.view.MainView;
 
 import javax.swing.*;
+import javax.swing.text.StringContent;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -45,25 +46,29 @@ public class GameController {
         }
 
         for (int i = 0; i < playersNumber; i++) {
-            String player = JOptionPane.showInputDialog(
+            String playerName = JOptionPane.showInputDialog(
                     null,
                     String.format("Enter Player's %d name", (i + 1)),
                     "Players",
                     JOptionPane.QUESTION_MESSAGE);
-            playerNames.add(player);
+            playerNames.add(playerName);
+            playerList.add(new Player(playerName));
         }
 
         gameView = new MainView(playerNames);
         gameView.run();
 
-        for (int turn = 0; turn < 13; turn++) {
-            for (String player : playerNames) {
-                gameView.setStatus(player + " turn. ");
-                for (int i = 0; i < 3; i++) {
-                    System.out.println("Roll");
-                }
-            }
-        }
+        Player player = nextPlayer();
+        gameView.setStatus(String.format(MainView.STATUS_FORMAT, player.getName()));
+
+//        for (int turn = 0; turn < 13; turn++) {
+//            for (String player : playerNames) {
+//                gameView.setStatus(player + " turn. ");
+//                for (int i = 0; i < 3; i++) {
+//                    System.out.println("Roll");
+//                }
+//            }
+//        }
     }
 
     public static void start() {
@@ -78,12 +83,11 @@ public class GameController {
     }
 
     private Player nextPlayer() {
-        playerIndex++;
-        if (playerIndex > playerList.size()) {
+        if (playerIndex >= playerList.size()) {
             playerIndex = 0;
         }
 
-        return playerList.get(playerIndex);
+        return playerList.get(playerIndex++);
     }
 
     public static ArrayList<Dice> rollSomeDice(ArrayList<Dice> diceList, int[] indices) {
