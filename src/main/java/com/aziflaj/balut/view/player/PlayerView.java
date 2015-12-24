@@ -55,7 +55,7 @@ public class PlayerView extends JPanel {
     }
 
     public PlayerView updateButton(int i, int score) {
-        buttonList.get(i).setText(String.valueOf(score));
+        buttonList.get(i).setText(String.format(SCORE_FORMAT, score));
         return this;
     }
 }

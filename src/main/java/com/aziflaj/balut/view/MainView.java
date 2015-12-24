@@ -1,12 +1,14 @@
 package com.aziflaj.balut.view;
 
 
+import com.aziflaj.balut.presenter.PlayerPresenter;
 import com.aziflaj.balut.view.dice.DicePanel;
 import com.aziflaj.balut.view.player.CategoriesPanel;
 import com.aziflaj.balut.view.player.PlayerPanel;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -15,20 +17,24 @@ import java.util.List;
 public class MainView extends JFrame {
     public static final String STATUS_FORMAT = "%s turn.";
     JLabel statusLabel;
+    ArrayList<PlayerPresenter> presenters;
 
     /**
      * Creates a UI frame, putting every UI widget in its place
      */
     public MainView(List<String> players) {
         super("Balut");
-        statusLabel = new JLabel("Hello My People");
+        statusLabel = new JLabel("Hello");
 
         JPanel containerPanel = new JPanel(new GridLayout(1, 3, 10, 10));
         containerPanel.setBorder(BorderFactory.createEtchedBorder());
         containerPanel.add(new DicePanel());
         containerPanel.add(new CategoriesPanel());
-        containerPanel.add(new PlayerPanel(players));
+        PlayerPanel playerPanel = new PlayerPanel(players);
+        containerPanel.add(playerPanel);
         containerPanel.setOpaque(false);
+
+        presenters = playerPanel.getPresenters();
 
         this.setLayout(new BorderLayout());
         this.add(containerPanel, BorderLayout.CENTER);
@@ -48,5 +54,9 @@ public class MainView extends JFrame {
 
     public void setStatus(String status) {
         statusLabel.setText(status);
+    }
+
+    public ArrayList<PlayerPresenter> getPresenters() {
+        return presenters;
     }
 }

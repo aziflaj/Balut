@@ -24,7 +24,6 @@ public class GameController {
     private GameController() {
         playerNames = new ArrayList<>();
         playerList = new ArrayList<>();
-        mPlayerPresenters = new ArrayList<>();
 
         for (String name : playerNames) {
             playerList.add(new Player(name));
@@ -62,6 +61,7 @@ public class GameController {
         }
 
         gameView = new MainView(playerNames);
+        mPlayerPresenters = gameView.getPresenters();
         gameView.run();
 
         playTurn();
@@ -119,17 +119,20 @@ public class GameController {
     public void playTurn() {
         Player player = nextPlayer();
         gameView.setStatus(String.format(MainView.STATUS_FORMAT, player.getName()));
-//        for (PlayerPresenter presenter : mPlayerPresenters) {
-//            int upper = presenter.calculateUpperPoints();
-//            presenter.getView()
-//                    .updateButton(6, upper)
-//                    .updateButton(15, presenter.calculateLowerPoints())
-//                    .updateButton(16, presenter.calculateTotal());
-//
-//            if (upper > 63) {
-//                presenter.getView().updateButton(7, 35);
-//            }
-//        }
+
+        if (mPlayerPresenters != null) {
+            for (PlayerPresenter presenter : mPlayerPresenters) {
+                int upper = presenter.calculateUpperPoints();
+                presenter.getView()
+                        .updateButton(6, upper)
+                        .updateButton(15, presenter.calculateLowerPoints())
+                        .updateButton(16, presenter.calculateTotal());
+
+                if (upper > 63) {
+                    presenter.getView().updateButton(7, 35);
+                }
+            }
+        }
     }
 
     public List<Dice> getDiceList() {
