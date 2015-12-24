@@ -4,6 +4,7 @@ import com.aziflaj.balut.GameController;
 import com.aziflaj.balut.model.Player;
 import com.aziflaj.balut.utils.GameCategory;
 import com.aziflaj.balut.utils.ScoreHelper;
+import com.aziflaj.balut.view.player.PlayerView;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -11,9 +12,11 @@ import java.util.Map;
 public class PlayerPresenterImpl implements PlayerPresenter {
     Player mPlayer;
     Map<GameCategory, Integer> mPointsMap;
+    PlayerView mView;
 
-    public PlayerPresenterImpl(String name) {
+    public PlayerPresenterImpl(String name, PlayerView view) {
         mPlayer = new Player(name);
+        mView = view;
         mPointsMap = new HashMap<>();
 
         // upper points
@@ -71,6 +74,11 @@ public class PlayerPresenterImpl implements PlayerPresenter {
         int bonus = (lower > 63) ? 35 : 0;
         int upper = calculateUpperPoints();
         return lower + bonus + upper;
+    }
+
+    @Override
+    public PlayerView getView() {
+        return mView;
     }
 
     private void rollDices() {

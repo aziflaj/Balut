@@ -2,6 +2,7 @@ package com.aziflaj.balut;
 
 import com.aziflaj.balut.model.Dice;
 import com.aziflaj.balut.model.Player;
+import com.aziflaj.balut.presenter.PlayerPresenter;
 import com.aziflaj.balut.view.MainView;
 
 import javax.swing.*;
@@ -12,7 +13,7 @@ public class GameController {
     private static GameController instance = null;
 
     List<Dice> mDiceList = null;
-
+    List<PlayerPresenter> mPlayerPresenters;
     int rolls = 0;
     int playersNumber = 0;
     List<String> playerNames;
@@ -20,17 +21,10 @@ public class GameController {
     int playerIndex = 0;
     MainView gameView;
 
-    public static GameController getInstance() {
-        if (instance == null) {
-            instance = new GameController();
-        }
-
-        return instance;
-    }
-
     private GameController() {
         playerNames = new ArrayList<>();
         playerList = new ArrayList<>();
+        mPlayerPresenters = new ArrayList<>();
 
         for (String name : playerNames) {
             playerList.add(new Player(name));
@@ -82,8 +76,20 @@ public class GameController {
 //        }
     }
 
+    public static GameController getInstance() {
+        if (instance == null) {
+            instance = new GameController();
+        }
+
+        return instance;
+    }
+
     public static void start() {
         GameController.getInstance();
+    }
+
+    public void setPlayerPresenters(List<PlayerPresenter> mPlayerPresenters) {
+        this.mPlayerPresenters = mPlayerPresenters;
     }
 
     public ArrayList<Dice> rollDice(ArrayList<Dice> diceList) {
@@ -113,6 +119,17 @@ public class GameController {
     public void playTurn() {
         Player player = nextPlayer();
         gameView.setStatus(String.format(MainView.STATUS_FORMAT, player.getName()));
+//        for (PlayerPresenter presenter : mPlayerPresenters) {
+//            int upper = presenter.calculateUpperPoints();
+//            presenter.getView()
+//                    .updateButton(6, upper)
+//                    .updateButton(15, presenter.calculateLowerPoints())
+//                    .updateButton(16, presenter.calculateTotal());
+//
+//            if (upper > 63) {
+//                presenter.getView().updateButton(7, 35);
+//            }
+//        }
     }
 
     public List<Dice> getDiceList() {

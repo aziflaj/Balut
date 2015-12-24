@@ -1,5 +1,6 @@
 package com.aziflaj.balut.view.player;
 
+import com.aziflaj.balut.GameController;
 import com.aziflaj.balut.presenter.PlayerPresenter;
 import com.aziflaj.balut.presenter.PlayerPresenterImpl;
 
@@ -7,7 +8,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.*;
+import java.util.ArrayList;
 
 public class PlayerView extends JPanel {
     private static final String SCORE_FORMAT = "   %02d   ";
@@ -17,7 +18,7 @@ public class PlayerView extends JPanel {
     ArrayList<JButton> buttonList;
 
     public PlayerView(String name) {
-        mPresenter = new PlayerPresenterImpl(name);
+        mPresenter = new PlayerPresenterImpl(name, this);
 
         // start putting the UI in place
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
@@ -46,13 +47,15 @@ public class PlayerView extends JPanel {
 
                         button.setText(String.format(SCORE_FORMAT, points));
                         button.setEnabled(false);
+                        GameController.getInstance().playTurn();
                     }
                 });
             }
         }
     }
 
-    public ArrayList<JButton> getButtonList() {
-        return buttonList;
+    public PlayerView updateButton(int i, int score) {
+        buttonList.get(i).setText(String.valueOf(score));
+        return this;
     }
 }
