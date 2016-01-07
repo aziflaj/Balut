@@ -18,6 +18,7 @@ public class GameController {
     List<String> playerNames;
     List<Player> playerList;
     int playerIndex = 0;
+    int turnCounter = 0;
     MainView gameView;
 
     private GameController() {
@@ -109,15 +110,29 @@ public class GameController {
     private Player nextPlayer() {
         if (playerIndex >= playerList.size()) {
             playerIndex = 0;
+            turnCounter++;
         }
 
         return playerList.get(playerIndex++);
     }
 
     public void playTurn() {
-        // TODO: add counter to count turns => save score in sqlite; check line 100
         // TODO: disable not playing players
         Player player = nextPlayer();
+        // TODO: add counter to count turns => save score in sqlite; check line 100
+        if (turnCounter >= 13) {
+            gameView.setStatus("Game finished!");
+            int max = getHighScore(mPlayerPresenters);
+            JOptionPane.showMessageDialog(
+                    null,
+                    "High Score: " + max,
+                    "Game Finished",
+                    JOptionPane.INFORMATION_MESSAGE);
+            return;
+        } else {
+            System.out.println("Turn: " + turnCounter);
+        }
+
         gameView.setStatus(String.format(MainView.STATUS_FORMAT, player.getName()));
 
         if (mPlayerPresenters != null) {
@@ -133,6 +148,17 @@ public class GameController {
                 }
             }
         }
+    }
+
+    private int getHighScore(List<PlayerPresenter> mPlayerPresenters) {
+        int max = 0;
+        for (PlayerPresenter p : mPlayerPresenters) {
+            int total = p.calculateTotal();
+            if (max < total) {
+                max = total;
+            }
+        }
+        return max;
     }
 
     public List<Dice> getDiceList() {
