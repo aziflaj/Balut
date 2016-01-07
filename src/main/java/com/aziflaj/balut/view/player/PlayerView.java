@@ -11,7 +11,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 public class PlayerView extends JPanel {
-    private static final String SCORE_FORMAT = "   %02d   ";
+    private static final String SCORE_FORMAT = "   %03d   ";
 
     JLabel playerNameLabel;
     PlayerPresenter mPresenter;
@@ -41,9 +41,7 @@ public class PlayerView extends JPanel {
                 button.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent actionEvent) {
-                        System.out.println("Button clicked");
                         int points = mPresenter.calculatePoints(index);
-                        System.out.println("Points: " + points);
 
                         button.setText(String.format(SCORE_FORMAT, points));
                         button.setEnabled(false);
@@ -58,5 +56,17 @@ public class PlayerView extends JPanel {
     public PlayerView updateButton(int i, int score) {
         buttonList.get(i).setText(String.format(SCORE_FORMAT, score));
         return this;
+    }
+
+    public void disableView() {
+        for (JButton b : buttonList) {
+            b.setEnabled(false);
+        }
+    }
+
+    public void enableView() {
+        for (JButton b : buttonList) {
+            b.setEnabled(true);
+        }
     }
 }

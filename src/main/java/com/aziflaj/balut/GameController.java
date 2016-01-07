@@ -117,15 +117,25 @@ public class GameController {
     }
 
     public void playTurn() {
-        // TODO: disable not playing players
         Player player = nextPlayer();
-        // TODO: add counter to count turns => save score in sqlite; check line 100
+        int index = 0;
+        for (PlayerPresenter p : mPlayerPresenters) {
+            if (index == playerIndex - 1) {
+                p.getView().enableView();
+            } else {
+                p.getView().disableView();
+            }
+            index++;
+        }
+
+        // TODO: save score in sqlite
         if (turnCounter >= 13) {
             gameView.setStatus("Game finished!");
-            int max = getHighScore(mPlayerPresenters);
+            Player winner = getWinner(mPlayerPresenters);
+            int max = winner.getPoints();
             JOptionPane.showMessageDialog(
                     null,
-                    "High Score: " + max,
+                    "High Score: " + max + " by " + winner.getName(),
                     "Game Finished",
                     JOptionPane.INFORMATION_MESSAGE);
             return;
@@ -150,15 +160,14 @@ public class GameController {
         }
     }
 
-    private int getHighScore(List<PlayerPresenter> mPlayerPresenters) {
-        int max = 0;
-        for (PlayerPresenter p : mPlayerPresenters) {
-            int total = p.calculateTotal();
-            if (max < total) {
-                max = total;
+    private Player getWinner(List<PlayerPresenter> mPlayerPresenters) {
+        Player winner = mPlayerPresenters.get(0).getPlayer();
+        for (int i = 1; i < mPlayerPresenters.size(); i++) {
+            if (winner.getPoints() < mPlayerPresenters.get(i).getPlayer().getPoints()) {
+                winner = mPlayerPresenters.get(i).getPlayer();
             }
         }
-        return max;
+        return winner;
     }
 
     public List<Dice> getDiceList() {

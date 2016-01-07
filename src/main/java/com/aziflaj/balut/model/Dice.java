@@ -50,12 +50,10 @@ public class Dice {
         return this.value;
     }
 
-    // TODO: not related to the model, but related to the view and/or presenter
     public void select() {
         this.state = SELECTED;
     }
 
-    // TODO: not related to the model, but related to the view and/or presenter
     public void unSelect() {
         this.state = UNSELECTED;
     }

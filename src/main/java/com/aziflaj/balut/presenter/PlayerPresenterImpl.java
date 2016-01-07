@@ -10,12 +10,12 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class PlayerPresenterImpl implements PlayerPresenter {
-    Player mPlayer;
-    Map<GameCategory, Integer> mPointsMap;
-    PlayerView mView;
+    Player player;
+    private Map<GameCategory, Integer> mPointsMap;
+    private PlayerView mView;
 
     public PlayerPresenterImpl(String name, PlayerView view) {
-        mPlayer = new Player(name);
+        player = new Player(name);
         mView = view;
         mPointsMap = new HashMap<>();
 
@@ -38,12 +38,18 @@ public class PlayerPresenterImpl implements PlayerPresenter {
     }
 
     @Override
+    public Player getPlayer() {
+        return player;
+    }
+
+    @Override
     public void play() {
         rollDices();
     }
 
     @Override
     public void addPoints(GameCategory gameCategory, int points) {
+        player.addPoints(points);
         mPointsMap.put(gameCategory, points);
     }
 

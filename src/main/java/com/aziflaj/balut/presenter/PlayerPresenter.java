@@ -1,5 +1,6 @@
 package com.aziflaj.balut.presenter;
 
+import com.aziflaj.balut.model.Player;
 import com.aziflaj.balut.utils.GameCategory;
 import com.aziflaj.balut.view.player.PlayerView;
 
@@ -15,6 +16,8 @@ public interface PlayerPresenter {
     int calculateTotal();
 
     PlayerView getView();
+
+    Player getPlayer();
 
     int calculatePoints(int index);
 }
