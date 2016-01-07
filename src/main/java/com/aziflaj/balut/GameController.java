@@ -50,11 +50,23 @@ public class GameController {
         }
 
         for (int i = 0; i < playersNumber; i++) {
-            String playerName = JOptionPane.showInputDialog(
-                    null,
-                    String.format("Enter Player's %d name", (i + 1)),
-                    "Players",
-                    JOptionPane.QUESTION_MESSAGE);
+            // TODO: check the new user in the DB. if not exists, create
+            String playerName;
+            do {
+                playerName = JOptionPane.showInputDialog(
+                        null,
+                        String.format("Enter Player's %d name", (i + 1)),
+                        "Players",
+                        JOptionPane.QUESTION_MESSAGE);
+
+                if (playerName.isEmpty()) {
+                    JOptionPane.showMessageDialog(
+                            null,
+                            "Player's name shouldn't be empty!",
+                            "Players",
+                            JOptionPane.ERROR_MESSAGE);
+                }
+            } while (playerName.isEmpty());
             playerNames.add(playerName);
             playerList.add(new Player(playerName));
         }
@@ -103,6 +115,8 @@ public class GameController {
     }
 
     public void playTurn() {
+        // TODO: add counter to count turns => save score in sqlite; check line 100
+        // TODO: disable not playing players
         Player player = nextPlayer();
         gameView.setStatus(String.format(MainView.STATUS_FORMAT, player.getName()));
 

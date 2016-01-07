@@ -13,18 +13,21 @@ public class BalutDbHelper {
             "age INTEGER NOT NULL " +
             ");";
 
+    static final String CREATE_TABLE_GAME_PLAYER = "CREATE TABLE IF NOT EXISTS game_players ( " +
+            "id INTEGER NOT NULL, " +
+            // "game_id INTEGER NOT NULL, " +
+            "player_id INTEGER NOT NULL, " +
+            "score INTEGER NOT NULL, " +
+            "FOREIGN KEY (game_id) REFERENCES game (id), " +
+            "FOREIGN KEY (player_id) REFERENCES player (id) " +
+            ");";
+
+    // TODO: delete
     static final String CREATE_TABLE_GAME = "CREATE TABLE IF NOT EXISTS game ( " +
             "id INTEGER PRIMARY KEY, " +
             "winner_id INTEGER NOT NULL, " +
+//            "score INTEGER NOT NULL, " +
             "FOREIGN KEY (winner_id) REFERENCES player (id) " +
-            ");";
-
-    static final String CREATE_TABLE_GAME_PLAYER = "CREATE TABLE IF NOT EXISTS game_players ( " +
-            "id INTEGER NOT NULL, " +
-            "game_id INTEGER NOT NULL, " +
-            "player_id INTEGER NOT NULL, " +
-            "FOREIGN KEY (game_id) REFERENCES game (id), " +
-            "FOREIGN KEY (player_id) REFERENCES player (id) " +
             ");";
 
     /**

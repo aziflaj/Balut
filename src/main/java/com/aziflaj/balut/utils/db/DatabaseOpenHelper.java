@@ -55,4 +55,6 @@ public class DatabaseOpenHelper {
         return statement.executeUpdate(sql);
     }
 
+    // TODO: insert method for new players and for new games
+
 }
