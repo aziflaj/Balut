@@ -8,13 +8,16 @@ public class CategoriesPanel extends JPanel {
 
     static final String[] UPPER_CATEGORIES = {
             "Ones", "Twos", "Threes",
-            "Fours", "Fives", "Sixes" };
+            "Fours", "Fives", "Sixes"};
 
     static final String[] LOWER_CATEGORIES = {
             "Three of a Kind", "Four of a Kind", "Full House (25)",
             "Four Stair (30)", "Five Stair (40)", "Five of a Kind (50)", "Any Other"
     };
 
+    /**
+     * Create the categories panel with the names of each category
+     */
     public CategoriesPanel() {
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 

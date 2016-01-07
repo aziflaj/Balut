@@ -54,14 +54,25 @@ public class MainView extends JFrame {
         this.setVisible(true);
     }
 
+    /**
+     * Change the status of the game
+     *
+     * @param status The status of the game
+     */
     public void setStatus(String status) {
         statusLabel.setText(status);
     }
 
+    /**
+     * @return All the {@code PlayerPresenter}s of the game
+     */
     public ArrayList<PlayerPresenter> getPresenters() {
         return presenters;
     }
 
+    /**
+     * Enables rolling for the game to go on
+     */
     public void enableRolling() {
         mDicePanel.enableRolling();
     }

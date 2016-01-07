@@ -50,10 +50,16 @@ public class Dice {
         return this.value;
     }
 
+    /**
+     * Set the state of the dice to {@code SELECTED}
+     */
     public void select() {
         this.state = SELECTED;
     }
 
+    /**
+     * Set the state of the dice to {@code UNSELECTED}
+     */
     public void unSelect() {
         this.state = UNSELECTED;
     }

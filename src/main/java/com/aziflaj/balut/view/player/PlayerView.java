@@ -53,17 +53,31 @@ public class PlayerView extends JPanel {
         }
     }
 
+    /**
+     * Updates the score on the button view
+     *
+     * @param i     The index of the button
+     * @param score The score to show
+     * @return The {@code PlayerView} instance calling the method, for chaining
+     * cases
+     */
     public PlayerView updateButton(int i, int score) {
         buttonList.get(i).setText(String.format(SCORE_FORMAT, score));
         return this;
     }
 
+    /**
+     * Disable the view so other players don't play for this player
+     */
     public void disableView() {
         for (JButton b : buttonList) {
             b.setEnabled(false);
         }
     }
 
+    /**
+     * Enables the view for the player to play
+     */
     public void enableView() {
         for (JButton b : buttonList) {
             b.setEnabled(true);

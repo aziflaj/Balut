@@ -14,6 +14,13 @@ public class PlayerPresenterImpl implements PlayerPresenter {
     private Map<GameCategory, Integer> mPointsMap;
     private PlayerView mView;
 
+    /**
+     * Creates an implementation instance of the {@code PlayerPresenter},
+     * with all scores as 0
+     *
+     * @param name The name of the player
+     * @param view The view corresponding to the presenter
+     */
     public PlayerPresenterImpl(String name, PlayerView view) {
         player = new Player(name);
         mView = view;
@@ -40,11 +47,6 @@ public class PlayerPresenterImpl implements PlayerPresenter {
     @Override
     public Player getPlayer() {
         return player;
-    }
-
-    @Override
-    public void play() {
-        rollDices();
     }
 
     @Override
@@ -87,12 +89,9 @@ public class PlayerPresenterImpl implements PlayerPresenter {
         return mView;
     }
 
-    private void rollDices() {
-        System.out.println("Rolling dices");
-    }
-
+    @Override
     public int calculatePoints(int index) {
-        int points = 0;
+        int points;
         switch (index) {
             case 0: // ONES
                 points = ScoreHelper.calculatePoints(

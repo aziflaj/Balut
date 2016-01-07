@@ -21,6 +21,9 @@ public class GameController {
     int turnCounter = 0;
     MainView gameView;
 
+    /**
+     * Create a Game Controller for the game to be played
+     */
     private GameController() {
         playerNames = new ArrayList<>();
         playerList = new ArrayList<>();
@@ -79,6 +82,9 @@ public class GameController {
         playTurn();
     }
 
+    /**
+     * @return The instance of the GameController singleton
+     */
     public static GameController getInstance() {
         if (instance == null) {
             instance = new GameController();
@@ -87,10 +93,19 @@ public class GameController {
         return instance;
     }
 
+    /**
+     * Create the instance if it is not already created, and start the game
+     */
     public static void start() {
         GameController.getInstance();
     }
 
+    /**
+     * Roll all of the dice in the game
+     *
+     * @param diceList The dice list
+     * @return The list of new dice
+     */
     public ArrayList<Dice> rollDice(ArrayList<Dice> diceList) {
         for (Dice dice : diceList) {
             dice.roll();
@@ -99,6 +114,13 @@ public class GameController {
         return diceList;
     }
 
+    /**
+     * Roll some of the dice in the given {@code diceList}
+     *
+     * @param diceList The list of all dice in the game
+     * @param indices  The indices of the dice to roll
+     * @return The list of new dice
+     */
     public ArrayList<Dice> rollSomeDice(ArrayList<Dice> diceList, int[] indices) {
         for (int i : indices) {
             diceList.get(i).roll();
@@ -107,6 +129,9 @@ public class GameController {
         return diceList;
     }
 
+    /**
+     * @return The next player who should play
+     */
     private Player nextPlayer() {
         if (playerIndex >= playerList.size()) {
             playerIndex = 0;
@@ -116,6 +141,9 @@ public class GameController {
         return playerList.get(playerIndex++);
     }
 
+    /**
+     * Play the turn of each player
+     */
     public void playTurn() {
         Player player = nextPlayer();
         int index = 0;
@@ -160,6 +188,13 @@ public class GameController {
         }
     }
 
+    /**
+     * Get the winner of the game
+     *
+     * @param mPlayerPresenters The Player presenters, from where the winner
+     *                          will be found
+     * @return The winner of the game
+     */
     private Player getWinner(List<PlayerPresenter> mPlayerPresenters) {
         Player winner = mPlayerPresenters.get(0).getPlayer();
         for (int i = 1; i < mPlayerPresenters.size(); i++) {
@@ -170,10 +205,16 @@ public class GameController {
         return winner;
     }
 
+    /**
+     * @return The list of all dice in the game
+     */
     public List<Dice> getDiceList() {
         return mDiceList;
     }
 
+    /**
+     * Enables rolling of the dice so the game can go on
+     */
     public void enableRolling() {
         gameView.enableRolling();
     }

@@ -12,6 +12,11 @@ public class PlayerPanel extends JPanel {
     ArrayList<PlayerPresenter> presenters;
     ArrayList<PlayerView> views;
 
+    /**
+     * Creates the Players panel with all the Player views
+     *
+     * @param players A list of names of the players
+     */
     public PlayerPanel(List<String> players) {
         this.setLayout(new GridLayout());
         presenters = new ArrayList<>();
@@ -24,18 +29,10 @@ public class PlayerPanel extends JPanel {
         }
     }
 
+    /**
+     * @return The list of all the player presenters
+     */
     public ArrayList<PlayerPresenter> getPresenters() {
         return presenters;
-    }
-
-    public void enableOnly(int index) {
-        int i = 0;
-        for (PlayerView v : views) {
-            if (i == index) {
-                v.enableView();
-            } else {
-                v.disableView();
-            }
-        }
     }
 }
