@@ -37,6 +37,8 @@ public class BalutDbHelper {
 
     static final String STORE_GAME = "INSERT INTO games (winner, score) VALUES (?, ?);";
 
+    static final String GET_RECORDMAN = "SELECT winner, MAX(score) FROM games;";
+
     /**
      * One-time running method for creating the schema of the database
      *

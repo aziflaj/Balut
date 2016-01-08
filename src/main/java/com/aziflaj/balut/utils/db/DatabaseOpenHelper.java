@@ -1,5 +1,7 @@
 package com.aziflaj.balut.utils.db;
 
+import com.aziflaj.balut.model.Player;
+
 import java.sql.*;
 
 /**
@@ -65,6 +67,15 @@ public class DatabaseOpenHelper {
         pstmt.setString(1, winner);
         pstmt.setInt(2, score);
         return pstmt.executeUpdate();
+    }
+
+    public Player getRecordman() throws SQLException {
+        Statement stmt = connection.createStatement();
+        ResultSet rs = stmt.executeQuery(BalutDbHelper.GET_RECORDMAN);
+        rs.next();
+        Player recordman = new Player(rs.getString(1));
+        recordman.addPoints(rs.getInt(2));
+        return recordman;
     }
 
 }
