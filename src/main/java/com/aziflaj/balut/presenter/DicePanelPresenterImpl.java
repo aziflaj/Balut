@@ -3,7 +3,6 @@ package com.aziflaj.balut.presenter;
 import com.aziflaj.balut.GameController;
 import com.aziflaj.balut.model.Dice;
 import com.aziflaj.balut.utils.BalutExceptionHandler;
-import com.aziflaj.balut.utils.ScoreHelper;
 
 import java.sql.SQLException;
 import java.util.ArrayList;

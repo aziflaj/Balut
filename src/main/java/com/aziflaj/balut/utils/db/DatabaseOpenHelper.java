@@ -52,7 +52,14 @@ public class DatabaseOpenHelper {
         return statement.executeUpdate(sql);
     }
 
-    // TODO: insert method for new players and for new games
+    /**
+     * Adds new score in the database
+     *
+     * @param winner The winner name or username
+     * @param score  The score
+     * @return 1 if the score is stored, otherwise 0
+     * @throws SQLException
+     */
     public int addNewScore(String winner, int score) throws SQLException {
         PreparedStatement pstmt = connection.prepareStatement(BalutDbHelper.STORE_GAME);
         pstmt.setString(1, winner);

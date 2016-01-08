@@ -18,7 +18,13 @@ public class PlayerView extends JPanel {
     JLabel playerNameLabel;
     PlayerPresenter mPresenter;
     ArrayList<JButton> buttonList;
+    ArrayList<Boolean> clickedCategories;
 
+    /**
+     * Create a new view for the player
+     *
+     * @param name The name of the player
+     */
     public PlayerView(String name) {
         mPresenter = new PlayerPresenterImpl(name, this);
 
@@ -29,21 +35,26 @@ public class PlayerView extends JPanel {
         playerNameLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         buttonList = new ArrayList<>();
+        clickedCategories = new ArrayList<>();
+
         // create the points list
         for (int i = 0; i < 17; i++) {
             final JButton button = new JButton(String.format(SCORE_FORMAT, 0));
             this.add(button);
             buttonList.add(button);
+            clickedCategories.add(false); // mark the button as not clicked
             button.setAlignmentX(Component.CENTER_ALIGNMENT);
 
             if (i == 6 || i == 7 || i == 15 || i == 16) {
                 button.setEnabled(false);
+                clickedCategories.set(i, true); // mark as clicked, so it won't be enabled
             } else {
                 final int index = i;
                 button.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent actionEvent) {
                         int points = mPresenter.calculatePoints(index);
+                        clickedCategories.set(index, true); // mark as clicked
 
                         button.setText(String.format(SCORE_FORMAT, points));
                         button.setEnabled(false);
@@ -86,8 +97,12 @@ public class PlayerView extends JPanel {
      * Enables the view for the player to play
      */
     public void enableView() {
+        int index = 0;
         for (JButton b : buttonList) {
-            b.setEnabled(true);
+            if (!clickedCategories.get(index)) {
+                b.setEnabled(true);
+            }
+            index++;
         }
     }
 }
