@@ -18,7 +18,6 @@ public class App {
             public void run() {
                 try {
                     GameController.start();
-//                    DatabaseOpenHelper.getInstance();
                 } catch (SQLException ex) {
                      BalutExceptionHandler.handleException(ex);
                 }

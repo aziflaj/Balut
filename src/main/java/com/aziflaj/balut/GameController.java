@@ -56,7 +56,6 @@ public class GameController {
         }
 
         for (int i = 0; i < playersNumber; i++) {
-            // TODO: check the new user in the DB. if not exists, create
             String playerName;
             do {
                 playerName = JOptionPane.showInputDialog(
@@ -158,7 +157,6 @@ public class GameController {
             index++;
         }
 
-        // TODO: save score in sqlite
         if (turnCounter >= 13) {
             gameView.setStatus("Game finished!");
             Player winner = getWinner(mPlayerPresenters);

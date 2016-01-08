@@ -1,13 +1,11 @@
 package com.aziflaj.balut.utils.db;
 
-import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 /**
  * Database helper class
  */
 public class BalutDbHelper {
-    //TODO: Rethink!
     static final String CREATE_TABLE_PLAYER = "CREATE TABLE IF NOT EXISTS player ( " +
             "id INTEGER PRIMARY KEY, " +
             "first_name TEXT NOT NULL, " +

@@ -44,11 +44,4 @@ public class Player {
         this.mPoints += points;
     }
 
-    /**
-     * Stores the user in the database.
-     * TODO: Should be implemented after the database is connected
-     */
-    public void persist() {
-        System.out.println("Persisting player " + this.mName);
-    }
 }
