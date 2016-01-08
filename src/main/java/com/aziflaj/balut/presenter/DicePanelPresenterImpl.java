@@ -31,16 +31,6 @@ public class DicePanelPresenterImpl implements DicePanelPresenter {
     }
 
     @Override
-    public void rollDices(int[] indices) {
-        try {
-            mDiceList = GameController.getInstance().rollSomeDice(mDiceList, indices);
-        } catch (SQLException e) {
-            e.printStackTrace();
-            BalutExceptionHandler.handleException(e);
-        }
-    }
-
-    @Override
     public void rollAllDices() {
         try {
             mDiceList = GameController.getInstance().rollDice(mDiceList);

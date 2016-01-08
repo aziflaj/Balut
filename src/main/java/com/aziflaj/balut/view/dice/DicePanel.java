@@ -10,6 +10,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+/**
+ * A JPanel class that holds the dice of the game
+ */
 public class DicePanel extends JPanel {
     DicePanelPresenter mPresenter;
     JButton mRollDicesBtn;
@@ -17,6 +20,9 @@ public class DicePanel extends JPanel {
 
     int clicked = 0;
 
+    /**
+     * Creates the panel
+     */
     public DicePanel() {
         mPresenter = new DicePanelPresenterImpl();
 
@@ -53,6 +59,10 @@ public class DicePanel extends JPanel {
         this.setOpaque(false);
     }
 
+    /**
+     * Calls the {@code rollAllDices} method from its presenter and updates all the
+     * {@code DiceView}s
+     */
     private void rollDices() {
         mPresenter.rollAllDices();
         int i = 0;
@@ -61,6 +71,9 @@ public class DicePanel extends JPanel {
         }
     }
 
+    /**
+     * Allows the player to roll the dice to play
+     */
     public void enableRolling() {
         mRollDicesBtn.setEnabled(true);
         clicked = 0;

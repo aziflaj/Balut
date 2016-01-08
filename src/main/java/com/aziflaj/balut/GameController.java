@@ -11,6 +11,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The GameController class is THE master controller of the class, managing the players, their
+ * turns, and all the functionality of the game
+ */
 public class GameController {
     private static GameController instance = null;
 

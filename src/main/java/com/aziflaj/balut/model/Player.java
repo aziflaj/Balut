@@ -43,5 +43,4 @@ public class Player {
     public void addPoints(int points) {
         this.mPoints += points;
     }
-
 }

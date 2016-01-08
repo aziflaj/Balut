@@ -9,6 +9,7 @@ public interface DiceMvpView {
 
     /**
      * Updates the dice when the dice is rolled again
+     *
      * @param dice The new dice, which should replace the older one
      */
     void updateDice(Dice dice);

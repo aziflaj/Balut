@@ -12,18 +12,13 @@ public interface DicePanelPresenter {
     ArrayList<Dice> getDiceList();
 
     /**
-     * Rolls some of the dice, the ones with the given indices
-     * @param indices The indices of dice to roll
-     */
-    void rollDices(int[] indices);
-
-    /**
      * Rolls all the dices
      */
     void rollAllDices();
 
     /**
      * Returns a dice at the given index
+     *
      * @param index The index of the dice to return
      * @return The dice at the given index
      */

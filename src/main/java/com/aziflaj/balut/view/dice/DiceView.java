@@ -17,6 +17,7 @@ public class DiceView extends JButton implements ActionListener, DiceMvpView {
 
     /**
      * Create and paint the view
+     *
      * @param dice The {@code Dice} instance upon the view should be built
      */
     public DiceView(Dice dice) {

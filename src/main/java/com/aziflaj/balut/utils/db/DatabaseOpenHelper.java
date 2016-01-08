@@ -69,6 +69,12 @@ public class DatabaseOpenHelper {
         return pstmt.executeUpdate();
     }
 
+    /**
+     * Fetches the maximum score from the database
+     *
+     * @return The player with the maximum score
+     * @throws SQLException
+     */
     public Player getRecordman() throws SQLException {
         Statement stmt = connection.createStatement();
         ResultSet rs = stmt.executeQuery(BalutDbHelper.GET_RECORDMAN);
@@ -77,5 +83,4 @@ public class DatabaseOpenHelper {
         recordman.addPoints(rs.getInt(2));
         return recordman;
     }
-
 }
