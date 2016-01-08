@@ -2,8 +2,10 @@ package com.aziflaj.balut.presenter;
 
 import com.aziflaj.balut.GameController;
 import com.aziflaj.balut.model.Dice;
+import com.aziflaj.balut.utils.BalutExceptionHandler;
 import com.aziflaj.balut.utils.ScoreHelper;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
@@ -31,12 +33,22 @@ public class DicePanelPresenterImpl implements DicePanelPresenter {
 
     @Override
     public void rollDices(int[] indices) {
-        mDiceList = GameController.getInstance().rollSomeDice(mDiceList, indices);
+        try {
+            mDiceList = GameController.getInstance().rollSomeDice(mDiceList, indices);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            BalutExceptionHandler.handleException(e);
+        }
     }
 
     @Override
     public void rollAllDices() {
-        mDiceList = GameController.getInstance().rollDice(mDiceList);
+        try {
+            mDiceList = GameController.getInstance().rollDice(mDiceList);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            BalutExceptionHandler.handleException(e);
+        }
     }
 
     @Override

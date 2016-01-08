@@ -3,9 +3,11 @@ package com.aziflaj.balut;
 import com.aziflaj.balut.model.Dice;
 import com.aziflaj.balut.model.Player;
 import com.aziflaj.balut.presenter.PlayerPresenter;
+import com.aziflaj.balut.utils.db.DatabaseOpenHelper;
 import com.aziflaj.balut.view.MainView;
 
 import javax.swing.*;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,7 +26,7 @@ public class GameController {
     /**
      * Create a Game Controller for the game to be played
      */
-    private GameController() {
+    private GameController() throws SQLException {
         playerNames = new ArrayList<>();
         playerList = new ArrayList<>();
 
@@ -85,7 +87,7 @@ public class GameController {
     /**
      * @return The instance of the GameController singleton
      */
-    public static GameController getInstance() {
+    public static GameController getInstance() throws SQLException {
         if (instance == null) {
             instance = new GameController();
         }
@@ -96,7 +98,7 @@ public class GameController {
     /**
      * Create the instance if it is not already created, and start the game
      */
-    public static void start() {
+    public static void start() throws SQLException {
         GameController.getInstance();
     }
 
@@ -144,7 +146,7 @@ public class GameController {
     /**
      * Play the turn of each player
      */
-    public void playTurn() {
+    public void playTurn() throws SQLException {
         Player player = nextPlayer();
         int index = 0;
         for (PlayerPresenter p : mPlayerPresenters) {
@@ -166,6 +168,7 @@ public class GameController {
                     "High Score: " + max + " by " + winner.getName(),
                     "Game Finished",
                     JOptionPane.INFORMATION_MESSAGE);
+            DatabaseOpenHelper.getInstance().addNewScore(winner.getName(), max);
             return;
         } else {
             System.out.println("Turn: " + turnCounter);

@@ -1,9 +1,6 @@
 package com.aziflaj.balut.utils.db;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 
 /**
  * A helper class for accessing the Database and handling low-level
@@ -56,5 +53,11 @@ public class DatabaseOpenHelper {
     }
 
     // TODO: insert method for new players and for new games
+    public int addNewScore(String winner, int score) throws SQLException {
+        PreparedStatement pstmt = connection.prepareStatement(BalutDbHelper.STORE_GAME);
+        pstmt.setString(1, winner);
+        pstmt.setInt(2, score);
+        return pstmt.executeUpdate();
+    }
 
 }

@@ -1,11 +1,13 @@
 package com.aziflaj.balut.utils.db;
 
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 /**
  * Database helper class
  */
 public class BalutDbHelper {
+    //TODO: Rethink!
     static final String CREATE_TABLE_PLAYER = "CREATE TABLE IF NOT EXISTS player ( " +
             "id INTEGER PRIMARY KEY, " +
             "first_name TEXT NOT NULL, " +
@@ -22,13 +24,20 @@ public class BalutDbHelper {
             "FOREIGN KEY (player_id) REFERENCES player (id) " +
             ");";
 
-    // TODO: delete
     static final String CREATE_TABLE_GAME = "CREATE TABLE IF NOT EXISTS game ( " +
             "id INTEGER PRIMARY KEY, " +
             "winner_id INTEGER NOT NULL, " +
-//            "score INTEGER NOT NULL, " +
+            "score INTEGER NOT NULL, " +
             "FOREIGN KEY (winner_id) REFERENCES player (id) " +
             ");";
+
+    static final String TEMP_TABLE = "CREATE TABLE IF NOT EXISTS games ( " +
+            "id INTEGER PRIMARY KEY, " +
+            "winner TEXT NOT NULL, " +
+            "score INTEGER NOT NULL " +
+            ");";
+
+    static final String STORE_GAME = "INSERT INTO games (winner, score) VALUES (?, ?);";
 
     /**
      * One-time running method for creating the schema of the database
@@ -38,9 +47,10 @@ public class BalutDbHelper {
      */
     public static int createDb() throws SQLException {
         int result = 0;
-        result += DatabaseOpenHelper.getInstance().update(CREATE_TABLE_PLAYER);
-        result += DatabaseOpenHelper.getInstance().update(CREATE_TABLE_GAME);
-        result += DatabaseOpenHelper.getInstance().update(CREATE_TABLE_GAME_PLAYER);
+//        result += DatabaseOpenHelper.getInstance().update(CREATE_TABLE_PLAYER);
+//        result += DatabaseOpenHelper.getInstance().update(CREATE_TABLE_GAME);
+//        result += DatabaseOpenHelper.getInstance().update(CREATE_TABLE_GAME_PLAYER);
+        result += DatabaseOpenHelper.getInstance().update(TEMP_TABLE);
         return result;
     }
 }

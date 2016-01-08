@@ -2,10 +2,12 @@ package com.aziflaj.balut.presenter;
 
 import com.aziflaj.balut.GameController;
 import com.aziflaj.balut.model.Player;
+import com.aziflaj.balut.utils.BalutExceptionHandler;
 import com.aziflaj.balut.utils.GameCategory;
 import com.aziflaj.balut.utils.ScoreHelper;
 import com.aziflaj.balut.view.player.PlayerView;
 
+import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -92,100 +94,102 @@ public class PlayerPresenterImpl implements PlayerPresenter {
     @Override
     public int calculatePoints(int index) {
         int points;
-        switch (index) {
-            case 0: // ONES
-                points = ScoreHelper.calculatePoints(
-                        GameController.getInstance().getDiceList(),
-                        GameCategory.ONES);
-                addPoints(GameCategory.ONES, points);
-                return points;
+        try {
+            switch (index) {
+                case 0: // ONES
+                    points = ScoreHelper.calculatePoints(
+                            GameController.getInstance().getDiceList(),
+                            GameCategory.ONES);
+                    addPoints(GameCategory.ONES, points);
+                    return points;
 
-            case 1: // TWOS
-                points = ScoreHelper.calculatePoints(
-                        GameController.getInstance().getDiceList(),
-                        GameCategory.TWOS);
-                addPoints(GameCategory.TWOS, points);
-                return points;
+                case 1: // TWOS
+                    points = ScoreHelper.calculatePoints(
+                            GameController.getInstance().getDiceList(),
+                            GameCategory.TWOS);
+                    addPoints(GameCategory.TWOS, points);
+                    return points;
 
-            case 2: // THREES
-                points = ScoreHelper.calculatePoints(
-                        GameController.getInstance().getDiceList(),
-                        GameCategory.THREES);
-                addPoints(GameCategory.THREES, points);
-                return points;
+                case 2: // THREES
+                    points = ScoreHelper.calculatePoints(
+                            GameController.getInstance().getDiceList(),
+                            GameCategory.THREES);
+                    addPoints(GameCategory.THREES, points);
+                    return points;
 
-            case 3: // FOURS
-                points = ScoreHelper.calculatePoints(
-                        GameController.getInstance().getDiceList(),
-                        GameCategory.FOURS);
-                addPoints(GameCategory.FOURS, points);
-                return points;
+                case 3: // FOURS
+                    points = ScoreHelper.calculatePoints(
+                            GameController.getInstance().getDiceList(),
+                            GameCategory.FOURS);
+                    addPoints(GameCategory.FOURS, points);
+                    return points;
 
-            case 4: // FIVES
-                points = ScoreHelper.calculatePoints(
-                        GameController.getInstance().getDiceList(),
-                        GameCategory.FIVES);
-                addPoints(GameCategory.FIVES, points);
-                return points;
+                case 4: // FIVES
+                    points = ScoreHelper.calculatePoints(
+                            GameController.getInstance().getDiceList(),
+                            GameCategory.FIVES);
+                    addPoints(GameCategory.FIVES, points);
+                    return points;
 
-            case 5: // SIXES
-                points = ScoreHelper.calculatePoints(
-                        GameController.getInstance().getDiceList(),
-                        GameCategory.SIXES);
-                addPoints(GameCategory.SIXES, points);
-                return points;
+                case 5: // SIXES
+                    points = ScoreHelper.calculatePoints(
+                            GameController.getInstance().getDiceList(),
+                            GameCategory.SIXES);
+                    addPoints(GameCategory.SIXES, points);
+                    return points;
 
-            case 8: // THREE OF A KIND
-                points = ScoreHelper.calculatePoints(
-                        GameController.getInstance().getDiceList(),
-                        GameCategory.THREE_OF_A_KIND);
-                addPoints(GameCategory.THREE_OF_A_KIND, points);
-                return points;
+                case 8: // THREE OF A KIND
+                    points = ScoreHelper.calculatePoints(
+                            GameController.getInstance().getDiceList(),
+                            GameCategory.THREE_OF_A_KIND);
+                    addPoints(GameCategory.THREE_OF_A_KIND, points);
+                    return points;
 
-            case 9: // FOUR OF A KIND
-                points = ScoreHelper.calculatePoints(
-                        GameController.getInstance().getDiceList(),
-                        GameCategory.FOUR_OF_A_KIND);
-                addPoints(GameCategory.FOUR_OF_A_KIND, points);
-                return points;
+                case 9: // FOUR OF A KIND
+                    points = ScoreHelper.calculatePoints(
+                            GameController.getInstance().getDiceList(),
+                            GameCategory.FOUR_OF_A_KIND);
+                    addPoints(GameCategory.FOUR_OF_A_KIND, points);
+                    return points;
 
-            case 10: // FULL HOUSE
-                points = ScoreHelper.calculatePoints(
-                        GameController.getInstance().getDiceList(),
-                        GameCategory.FULL_HOUSE);
-                addPoints(GameCategory.FULL_HOUSE, points);
-                return points;
+                case 10: // FULL HOUSE
+                    points = ScoreHelper.calculatePoints(
+                            GameController.getInstance().getDiceList(),
+                            GameCategory.FULL_HOUSE);
+                    addPoints(GameCategory.FULL_HOUSE, points);
+                    return points;
 
-            case 11: // FOUR STAIR
-                points = ScoreHelper.calculatePoints(
-                        GameController.getInstance().getDiceList(),
-                        GameCategory.FOUR_STAIR);
-                addPoints(GameCategory.FOUR_STAIR, points);
-                return points;
+                case 11: // FOUR STAIR
+                    points = ScoreHelper.calculatePoints(
+                            GameController.getInstance().getDiceList(),
+                            GameCategory.FOUR_STAIR);
+                    addPoints(GameCategory.FOUR_STAIR, points);
+                    return points;
 
-            case 12: // FIVE STAIR
-                points = ScoreHelper.calculatePoints(
-                        GameController.getInstance().getDiceList(),
-                        GameCategory.FIVE_STAIR);
-                addPoints(GameCategory.FIVE_STAIR, points);
-                return points;
+                case 12: // FIVE STAIR
+                    points = ScoreHelper.calculatePoints(
+                            GameController.getInstance().getDiceList(),
+                            GameCategory.FIVE_STAIR);
+                    addPoints(GameCategory.FIVE_STAIR, points);
+                    return points;
 
-            case 13: // FIVE OF A KIND
-                points = ScoreHelper.calculatePoints(
-                        GameController.getInstance().getDiceList(),
-                        GameCategory.FIVE_OF_A_KIND);
-                addPoints(GameCategory.FIVE_OF_A_KIND, points);
-                return points;
+                case 13: // FIVE OF A KIND
+                    points = ScoreHelper.calculatePoints(
+                            GameController.getInstance().getDiceList(),
+                            GameCategory.FIVE_OF_A_KIND);
+                    addPoints(GameCategory.FIVE_OF_A_KIND, points);
+                    return points;
 
-            case 14: // ANY CASE
-                points = ScoreHelper.calculatePoints(
-                        GameController.getInstance().getDiceList(),
-                        GameCategory.ANY_CASE);
-                addPoints(GameCategory.ANY_CASE, points);
-                return points;
-
-            default:
-                return 0;
+                case 14: // ANY CASE
+                    points = ScoreHelper.calculatePoints(
+                            GameController.getInstance().getDiceList(),
+                            GameCategory.ANY_CASE);
+                    addPoints(GameCategory.ANY_CASE, points);
+                    return points;
+            }
+        } catch (SQLException ex) {
+            BalutExceptionHandler.handleException(ex);
         }
+        return 0;
     }
 }

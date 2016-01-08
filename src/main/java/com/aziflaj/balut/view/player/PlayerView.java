@@ -3,11 +3,13 @@ package com.aziflaj.balut.view.player;
 import com.aziflaj.balut.GameController;
 import com.aziflaj.balut.presenter.PlayerPresenter;
 import com.aziflaj.balut.presenter.PlayerPresenterImpl;
+import com.aziflaj.balut.utils.BalutExceptionHandler;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class PlayerView extends JPanel {
@@ -45,8 +47,13 @@ public class PlayerView extends JPanel {
 
                         button.setText(String.format(SCORE_FORMAT, points));
                         button.setEnabled(false);
-                        GameController.getInstance().enableRolling();
-                        GameController.getInstance().playTurn();
+                        try {
+                            GameController.getInstance().enableRolling();
+                            GameController.getInstance().playTurn();
+                        } catch (SQLException e) {
+                            e.printStackTrace();
+                            BalutExceptionHandler.handleException(e);
+                        }
                     }
                 });
             }
